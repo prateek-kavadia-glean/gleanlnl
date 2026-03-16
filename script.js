@@ -1,17 +1,28 @@
 // Configuration for city, dates, contact, speakers, and behavior.
 // Non-technical teammates can safely edit values in CONFIG.
+// Can be moved to a JSON file or per-region override later (e.g. NYC, Austin).
 const CONFIG = {
-  cityRegion: "San Francisco Bay Area",
+  // Region & date window (single source of truth for copy)
+  region: "San Francisco Bay Area",
+  cityRegion: "San Francisco Bay Area", // alias for data-config-text
   availabilityWindow: "March 30–April 3, 2026",
   formatSummary: "Lunch and Learn (breakfast, lunch, or coffee)",
+  heroEyebrow: "SF Bay Area • March 30–April 3, 2026",
+
+  // SLA (business days to first response)
   responseSLA: "2 business days",
+  responseSLABusinessDays: 2,
+
+  // Session timing
   prepDuration: "30–45 minute",
   sessionDuration: "60–90 minutes",
+
+  // Contact & form routing
   contactEmail: "prateek.kavadia@glean.com",
-  internalNotifyEmail: "onsite-ai-sessions@glean.com", // used server-side
-  // FormSubmit.co sends emails to these addresses on form submission
+  internalNotifyEmail: "onsite-ai-sessions@glean.com",
   formNotifyEmails: "prateek.kavadia@glean.com,tanner.cherry@glean.com,nick.devito@glean.com",
-  // Optional: preferred date options for form dropdown (March 30 - April 3, 2026)
+
+  // Preferred date options for form dropdown (March 30 - April 3, 2026)
   preferredDateOptions: [
     { value: "Monday, March 30", label: "Monday, March 30" },
     { value: "Tuesday, March 31", label: "Tuesday, March 31" },
@@ -19,6 +30,7 @@ const CONFIG = {
     { value: "Thursday, April 2", label: "Thursday, April 2" },
     { value: "Friday, April 3", label: "Friday, April 3" }
   ],
+
   speakers: [
     {
       name: "Prateek Kavadia",
@@ -37,6 +49,15 @@ const CONFIG = {
   additionalSupport: "Nick DeVito (Corporate Sales Director) and the Corporate team"
 };
 
+// Form endpoint: swap for Glean-owned endpoint or Marketo/HubSpot when ready.
+// TODO: Wire Glean-owned form endpoint; add hidden fields for UTM params, campaignId, etc.
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONFIG.formNotifyEmails}`;
+
+// Testimonials: add real quotes here to render in #testimonials-container; leave empty to hide.
+const TESTIMONIALS = [
+  // { quote: "...", name: "...", title: "...", company: "..." },
+];
+
 // --- Helpers -------------------------------------------------------------
 
 function applyConfigText() {
@@ -45,6 +66,7 @@ function applyConfigText() {
     availabilityWindow: CONFIG.availabilityWindow,
     formatSummary: CONFIG.formatSummary,
     responseSLA: CONFIG.responseSLA,
+    heroEyebrow: CONFIG.heroEyebrow,
     prepDuration: CONFIG.prepDuration || "30–45 minute",
     sessionDuration: CONFIG.sessionDuration || "60–90 minutes"
   };
@@ -143,12 +165,37 @@ function renderSpeakers() {
   });
 }
 
-function trackEvent(name, payload = {}) {
-  // Hook up your analytics provider here (e.g., gtag, Segment, etc.)
-  // Example:
-  // window.gtag && window.gtag('event', name, payload);
+function renderTestimonials() {
+  const container = document.getElementById("testimonials-container");
+  if (!container || !Array.isArray(TESTIMONIALS) || TESTIMONIALS.length === 0) return;
+  container.hidden = false;
+  container.innerHTML = "";
+  TESTIMONIALS.forEach((t) => {
+    const blockquote = document.createElement("blockquote");
+    blockquote.className = "testimonial-card";
+    const p = document.createElement("p");
+    p.textContent = t.quote;
+    const footer = document.createElement("footer");
+    footer.textContent = [t.name, t.title, t.company].filter(Boolean).join(", ");
+    blockquote.appendChild(p);
+    blockquote.appendChild(footer);
+    container.appendChild(blockquote);
+  });
+}
+
+function trackEvent(action, labelOrPayload = null, label = null) {
+  const payload = typeof labelOrPayload === "object" && labelOrPayload !== null
+    ? { ...labelOrPayload }
+    : { label: label != null ? label : labelOrPayload };
+  if (typeof window.dataLayer !== "undefined") {
+    window.dataLayer.push({
+      event: "lnl_event",
+      action: action,
+      ...payload
+    });
+  }
   if (window.console && console.debug) {
-    console.debug("[analytics]", name, payload);
+    console.debug("[analytics] lnl_event", action, payload);
   }
 }
 
@@ -200,14 +247,14 @@ function initForm() {
     successContactLink.href = `mailto:${CONFIG.contactEmail}`;
   }
 
-  // Analytics hooks
+  // Analytics: push lnl_event with action/label from data-analytics
   document
     .querySelectorAll("[data-analytics]")
     .forEach((el) => {
       el.addEventListener("click", () => {
-        const eventName = el.getAttribute("data-analytics");
-        if (eventName) {
-          trackEvent(eventName);
+        const action = el.getAttribute("data-analytics");
+        if (action) {
+          trackEvent(action, { label: action });
         }
       });
     });
@@ -322,7 +369,7 @@ function initForm() {
     if (hasError) {
       errorSummary.textContent =
         "Please review the highlighted fields and try again.";
-      trackEvent("form_validation_error");
+      trackEvent("form_validation_error", { label: "form_validation_error" });
       return;
     }
 
@@ -371,10 +418,11 @@ function initForm() {
       }
     };
 
-    trackEvent("form_submit_attempt");
+    trackEvent("form_submit_attempt", { label: "form_submit_attempt" });
 
     try {
-      // FormSubmit.co AJAX endpoint sends emails to configured addresses
+      // Payload structure: easy to swap to Marketo/HubSpot/Glean endpoint without changing validation.
+      // TODO: Add hidden fields for UTM (utm_source, utm_medium, utm_campaign), campaignId, etc., when wiring to Glean endpoint.
       const formPayload = {
         _subject: `On-site AI Session Request - ${data.company}`,
         _template: "table",
@@ -395,8 +443,7 @@ function initForm() {
         "Submitted at": payload.timestamp
       };
 
-      const formEndpoint = `https://formsubmit.co/ajax/${CONFIG.formNotifyEmails}`;
-      const response = await fetch(formEndpoint, {
+      const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -410,6 +457,7 @@ function initForm() {
       }
 
       trackEvent("form_submit_success", {
+        label: "form_submit_success",
         company: data.company,
         cityRegion: CONFIG.cityRegion
       });
@@ -435,7 +483,7 @@ function initForm() {
         "Something went wrong while submitting your request. Please try again, or reach out directly at " +
         (CONFIG.contactEmail || "events@glean.com") +
         ".";
-      trackEvent("form_submit_error");
+      trackEvent("form_submit_error", { label: "form_submit_error" });
     }
   });
 }
@@ -447,5 +495,6 @@ document.addEventListener("DOMContentLoaded", () => {
   configureContactLink();
   initNavToggle();
   renderSpeakers();
+  renderTestimonials();
   initForm();
 });

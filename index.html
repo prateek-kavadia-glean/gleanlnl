@@ -9,10 +9,22 @@
   <title>On-Site AI Strategy Sessions | Glean</title>
   <meta
     name="description"
-    content="Host an AI strategy session at your office. Glean will come onsite for a breakfast, lunch, or coffee session to unpack the AI landscape, share real customer workflows, and help you plan what’s next."
+    content="SF Bay Area Lunch & Learn week, March 30–April 3, 2026. Host an on-site Work AI session with your leadership team. Prioritize agentic AI use cases, see Glean live, and leave with a practical internal AI roadmap."
   />
-  <link rel="icon" href="assets/glean-icon.png" type="image/png" />
-  <!-- Typography: PolySans where available, fallback to DM Sans -->
+  <!-- Canonical URL: update when deploying (e.g. via constant in script.js) -->
+  <link rel="canonical" href="https://www.glean.com/lunch-and-learn" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="On-Site AI Strategy Sessions | Glean" />
+  <meta property="og:description" content="SF Bay Area Lunch &amp; Learn week. On-site Work AI sessions with your leadership team—prioritize agentic AI use cases, see Glean live, and leave with a practical AI roadmap." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.glean.com/lunch-and-learn" />
+  <meta property="og:image" content="https://www.glean.com/images/og-lunch-and-learn.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="On-Site AI Strategy Sessions | Glean" />
+  <meta name="twitter:description" content="SF Bay Area Lunch &amp; Learn week. On-site Work AI sessions with your leadership team." />
+  <link rel="icon" href="assets/glean-wordmark.png" type="image/png" />
+  <!-- Typography: PolySans via styles.css when brand assets available; DM Sans fallback -->
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com"
@@ -27,6 +39,9 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Event","name":"SF Bay Area Lunch & Learn — On-Site Work AI Sessions","description":"Limited on-site Lunch & Learn sessions for Bay Area leadership teams. Prioritize agentic AI use cases, see Glean live, and leave with a practical internal AI roadmap.","startDate":"2026-03-30","endDate":"2026-04-03","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"Place","name":"San Francisco Bay Area","address":{"@type":"PostalAddress","addressRegion":"CA","addressCountry":"US"}},"organizer":{"@type":"Organization","name":"Glean Technologies, Inc.","url":"https://www.glean.com"}}
+  </script>
 </head>
 <body>
   <!-- Sticky Navigation -->
@@ -38,7 +53,7 @@
         aria-label="Glean home"
       >
         <img
-          src="assets/glean-wordmark.png"
+          src="assets/glean-icon.png"
           alt="Glean"
           class="logo-wordmark"
           width="90"
@@ -75,19 +90,15 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow">
-            On-site AI strategy sessions
-          </p>
-          <h1>
-            Work AI that works — at your office
+          <p class="eyebrow" data-config-text="heroEyebrow">SF Bay Area • March 30–April 3, 2026</p>
+          <h1 id="hero-heading">
+            On-site Work AI Lunch &amp; Learn with your leadership team
           </h1>
           <p class="hero-subtitle">
-            Host a 60–90 minute AI strategy session with your team. We’ll bring
-            the Glean team to you: breakfast, lunch, or coffee. Real workflows,
-            real use cases, and a clear path to what’s next.
+            Glean is in town for a limited series of on-site Lunch &amp; Learn sessions. We’ll help Bay Area teams prioritize agentic AI use cases, see Glean live, and leave with a practical internal AI roadmap. 60–90 minute sessions at your office.
           </p>
 
           <div class="hero-badges">
@@ -134,6 +145,10 @@
           </p>
         </div>
         <aside class="hero-panel">
+          <figure class="hero-visual" aria-hidden="true">
+            <!-- Optional hero image: swap src for product screenshot or event artwork; keep alt empty when decorative -->
+            <img src="assets/hero-work-ai.svg" alt="" class="hero-visual-img" width="400" height="280" onerror="this.style.display='none'" />
+          </figure>
           <div class="hero-panel-card">
             <h2>Reimagine AI at work — together</h2>
             <ul class="hero-list">
@@ -165,22 +180,21 @@
       <div class="container">
         <div class="section-header">
           <h2>About the sessions</h2>
+          <p class="what-is-glean">
+            Glean is Work AI that works: an AI Assistant and Agents that put your company’s knowledge to work across search, creation, and automation—securely and at scale.
+          </p>
           <p>
-            A limited number of on-site AI strategy sessions: our team comes to
-            your office to help you put Work AI to work. No generic pitch — we
-            tailor the conversation to your tools, your teams, and your goals.
+            A limited series of on-site Lunch &amp; Learn sessions in the <span data-config-text="cityRegion"></span>. We come to your office to help you turn AI ambition into practical internal execution. No generic pitch—we tailor the conversation to your tools, teams, and goals.
           </p>
         </div>
 
         <div class="two-column">
           <div class="column">
-            <p>
-              Each session is designed to meet you where you are in your AI
-              journey—whether you’re just starting to explore AI at work or
-              refining an existing roadmap. The format is flexible:
-              breakfast briefing, lunch-and-learn, coffee chat, or
-              afternoon working session.
-            </p>
+            <ul class="checklist">
+              <li>60–90 minute on-site session (breakfast, lunch, or coffee).</li>
+              <li>Priority agentic AI use cases and a live Glean product deep dive with interactive Q&amp;A.</li>
+              <li>Leave with a practical internal AI roadmap that fits your environment.</li>
+            </ul>
           </div>
           <div class="column">
             <ul class="checklist">
@@ -310,8 +324,7 @@
         <div class="section-header">
           <h2>What you’ll learn</h2>
           <p>
-            One centralized view of AI at work: what’s working for enterprises
-            today, how to prioritize use cases, and how to deploy with confidence.
+            Turn AI ambition into practical execution. One session: priority agentic AI use cases, a live Glean deep dive, and a roadmap that fits your environment.
           </p>
         </div>
 
@@ -319,33 +332,28 @@
           <article class="info-card">
             <h3>The real state of AI at work</h3>
             <p>
-              Where AI delivers value today, where it struggles, and how Work AI
-              fits alongside your existing tools, systems, and workflows.
+              Where AI delivers value today and how Work AI fits alongside your existing tools and workflows.
             </p>
           </article>
 
           <article class="info-card">
             <h3>Customer-proven workflows</h3>
             <p>
-              Concrete examples of searches, agents, and automations that Glean
-              customers are using across engineering, support, IT, sales, and
-              more.
+              Searches, agents, and automations that Glean customers use across engineering, support, IT, and sales.
             </p>
           </article>
 
           <article class="info-card">
             <h3>Your path to impact</h3>
             <p>
-              A practical way to prioritize use cases, sequence pilots, and
-              connect AI outcomes to your team’s goals and metrics.
+              Prioritize use cases, sequence pilots, and connect AI outcomes to your team’s goals.
             </p>
           </article>
 
           <article class="info-card">
             <h3>Governance, security, and change</h3>
             <p>
-              How to roll out AI in a way that respects permissions,
-              compliance, and employee trust—while keeping teams productive.
+              Roll out AI with permissions, compliance, and employee trust in mind.
             </p>
           </article>
         </div>
@@ -497,28 +505,24 @@
             <div>
               <h3>When</h3>
               <p>
-                Limited availability
-                <span data-config-text="availabilityWindow"></span>.
+                <span data-config-text="availabilityWindow"></span> — by appointment.
               </p>
             </div>
             <div>
               <h3>Format</h3>
               <p>
-                Lunch and Learn (breakfast, lunch, or coffee)
-                — 60–90 minutes at your office.
+                Lunch &amp; Learn: 60–90 minutes at your office (breakfast, lunch, or coffee).
               </p>
             </div>
             <div>
               <h3>What’s included</h3>
               <p>
-                On-site session with a Glean Solutions Engineer and account
-                team; food or refreshments provided where applicable.
+                On-site session with Glean Solutions Engineering and Corporate team. Glean covers lunch/refreshments for the Lunch &amp; Learn format.
               </p>
             </div>
           </div>
           <p class="logistics-note">
-            We’ll coordinate timing, format, and attendees with your champion
-            after you request a session.
+            We’ll coordinate timing, format, and attendees with your champion after you request a session.
           </p>
         </div>
       </div>
@@ -529,22 +533,15 @@
       <div class="container">
         <p class="social-proof-eyebrow">The world's leading enterprises put AI to work with Glean</p>
         <div class="logo-band" aria-hidden="true">
-          <span class="customer-logo-text">Plaid</span>
-          <span class="customer-logo-text">Pinterest</span>
-          <span class="customer-logo-text">WealthSimple</span>
-          <span class="customer-logo-text">Gainsight</span>
-          <span class="customer-logo-text">Greenhouse</span>
-          <span class="customer-logo-text">LaunchDarkly</span>
+          <img src="assets/logos/plaid.svg" alt="Plaid" class="customer-logo" width="100" height="28" />
+          <img src="assets/logos/pinterest.svg" alt="Pinterest" class="customer-logo" width="100" height="28" />
+          <img src="assets/logos/wealthsimple.svg" alt="WealthSimple" class="customer-logo" width="100" height="28" />
+          <img src="assets/logos/gainsight.svg" alt="Gainsight" class="customer-logo" width="100" height="28" />
+          <img src="assets/logos/greenhouse.svg" alt="Greenhouse" class="customer-logo" width="100" height="28" />
+          <img src="assets/logos/launchdarkly.svg" alt="LaunchDarkly" class="customer-logo" width="100" height="28" />
         </div>
-        <div class="testimonials">
-          <blockquote class="testimonial-card">
-            <p>“The AI strategy session helped us cut through the noise and focus on what actually works. We left with a clear roadmap.”</p>
-            <footer>— IT Leader, Enterprise</footer>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <p>“Having the team come on-site made all the difference. The discussion was tailored to our tools and our questions.”</p>
-            <footer>— Operations Director, Mid-Market</footer>
-          </blockquote>
+                <div class="testimonials" id="testimonials-container" hidden>
+          <!-- Populated from script.js TESTIMONIALS when present -->
         </div>
       </div>
     </section>
@@ -561,8 +558,7 @@
             Request an on-site AI strategy session
           </h2>
           <p>
-            Share your details and preferred timing. We’ll reach out to schedule
-            a brief prep call and confirm your on-site session — no obligation.
+            Share your details and preferred timing. We'll get back to you within <span data-config-text="responseSLA"></span> to schedule a short prep call and confirm details. No obligation.
           </p>
         </div>
 
@@ -587,13 +583,10 @@
             <ol class="numbered-list">
               <li>Submit your request with dates and format preferences.</li>
               <li>
-                We reach out within
-                <span data-config-text="responseSLA"></span>
-                to schedule a prep conversation.
+                We'll get back to you within <span data-config-text="responseSLA"></span> to schedule a short prep call and confirm details.
               </li>
               <li>
-                We confirm the final agenda and host the on-site session at
-                your office.
+                We confirm the final agenda and host the on-site session at your office.
               </li>
             </ol>
           </div>
@@ -602,10 +595,7 @@
             <div id="form-success-card" class="form-success-card" hidden>
               <h3>Thanks for requesting an on-site AI session</h3>
               <p>
-                We’ve received your request. Our team will reach out within
-                <span data-config-text="responseSLA"></span>
-                business days to schedule a short prep conversation and confirm
-                details for your on-site session.
+                We’ve received your request. We'll get back to you within <span data-config-text="responseSLA"></span> to schedule a short prep call and confirm details.
               </p>
               <p class="form-success-card-contact">
                 For urgent questions, reach us at
@@ -643,6 +633,7 @@
                   type="email"
                   id="workEmail"
                   name="workEmail"
+                  inputmode="email"
                   autocomplete="email"
                   required
                 />
@@ -809,9 +800,9 @@
                 </p>
               </div>
 
-              <div class="field-group">
+              <div class="field-group field-group-optional">
                 <label for="aiJourney">
-                  What does your AI journey look like today?
+                  What does your AI journey look like today? <span class="label-optional">(Optional)</span>
                 </label>
                 <textarea
                   id="aiJourney"
@@ -819,14 +810,13 @@
                   rows="3"
                 ></textarea>
                 <p class="field-hint">
-                  Share a bit about where you are with AI at work (experiments,
-                  pilots, or production use).
+                  Share a bit about where you are with AI at work (experiments, pilots, or production use).
                 </p>
               </div>
 
-              <div class="field-group">
+              <div class="field-group field-group-optional">
                 <label for="desiredOutcomes">
-                  What would you most like to get out of this session?
+                  What would you most like to get out of this session? <span class="label-optional">(Optional)</span>
                 </label>
                 <textarea
                   id="desiredOutcomes"
@@ -834,8 +824,7 @@
                   rows="3"
                 ></textarea>
                 <p class="field-hint">
-                  This helps us tailor both the prep session and on-site
-                  content.
+                  This helps us tailor both the prep session and on-site content.
                 </p>
               </div>
 
@@ -891,72 +880,42 @@
           <details>
             <summary>What formats do you offer?</summary>
             <p>
-              We offer breakfast briefings, lunch-and-learns, coffee chats, and
-              afternoon working sessions. We’ll work with you to choose the
-              format that best fits your culture and schedule.
+              Breakfast, lunch-and-learn, or coffee/afternoon sessions. We'll align on the format that fits your schedule.
             </p>
           </details>
 
           <details>
             <summary>Where do the sessions take place?</summary>
             <p>
-              All sessions take place at your office in the selected
-              city or region. We’ll confirm the exact location with your
-              champion during the prep conversation.
+              At your office in the selected region. We confirm the exact location with your champion during the prep call.
             </p>
           </details>
 
           <details>
             <summary>Is there a cost to host a session?</summary>
             <p>
-              The on-site AI strategy session itself is complimentary for
-              invited organizations. If catering or additional services are
-              involved, we’ll align on details in advance.
+              The session is complimentary for invited organizations. Glean covers lunch/refreshments for the Lunch &amp; Learn format.
             </p>
           </details>
 
           <details>
             <summary>How many people should attend?</summary>
-            <p>
-              We typically recommend 6–20 attendees, including a mix of
-              technical and business stakeholders. Smaller working groups are
-              welcome as well.
-            </p>
+            <p>We recommend 6–20 attendees—a mix of technical and business stakeholders. Smaller groups are welcome.</p>
           </details>
 
           <details>
-            <summary>
-              Do we need any specific tools set up in advance?
-            </summary>
-            <p>
-              No special setup is required. The prep session will cover your
-              existing tools and environment. The on-site session focuses on
-              discussion, examples, and planning, with product views where
-              relevant.
-            </p>
+            <summary>Do we need any specific tools set up in advance?</summary>
+            <p>No. The prep call covers your environment; the on-site session focuses on discussion, examples, and planning with product views where relevant.</p>
           </details>
 
           <details>
-            <summary>
-              Will you cover our specific environment and questions?
-            </summary>
-            <p>
-              Yes. The goal of the prep session is to understand your tools,
-              data sources, and priorities so that the on-site conversation
-              speaks directly to your context and teams.
-            </p>
+            <summary>Will you cover our specific environment and questions?</summary>
+            <p>Yes. The prep session is designed so the on-site conversation speaks directly to your tools, data sources, and teams.</p>
           </details>
 
           <details>
-            <summary>
-              How soon will we hear back after submitting a request?
-            </summary>
-            <p>
-              You can expect to hear from us within
-              <span data-config-text="responseSLA"></span>
-              business days to coordinate your prep session and confirm
-              next steps.
-            </p>
+            <summary>How soon will we hear back after submitting a request?</summary>
+            <p>Within <span data-config-text="responseSLA"></span> to schedule your prep call and confirm next steps.</p>
           </details>
         </div>
         <div class="section-cta">
@@ -995,7 +954,7 @@
       <div class="footer-grid">
         <div class="footer-col footer-brand">
           <div class="footer-logo">
-            <img src="assets/glean-wordmark.png" alt="Glean" width="80" height="22" />
+            <img src="assets/glean-icon.png" alt="Glean" width="80" height="22" />
           </div>
           <p class="footer-tagline">Work AI that works.</p>
           <p class="footer-address">
