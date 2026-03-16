@@ -2,6 +2,13 @@
 
 This document describes the structure, editable areas, and technical decisions for the landing page.
 
+## Brand Alignment (glean.com)
+
+Design follows [Glean brand resources](https://www.glean.com/brand-resources):
+- **Colors**: Primary Blue #343CED, Bright Green #D8FD49, Oatmeal #F6F3EB
+- **Typography**: PolySans (primary), DM Sans (fallback)
+- **Tagline**: "Work AI that works."
+
 ## Editable Text Areas (Non-Developer)
 
 ### CONFIG (script.js)
@@ -10,12 +17,12 @@ All campaign-specific values live in the `CONFIG` object at the top of `script.j
 | Key | Purpose | Example |
 |-----|---------|---------|
 | `cityRegion` | Target city/region for sessions | `"San Francisco Bay Area"` |
-| `availabilityWindow` | Date range for sessions | `"March 24–28, 2025"` |
-| `formatSummary` | Badge text for format | `"On-site AI strategy sessions (breakfast, lunch, or coffee)"` |
+| `availabilityWindow` | Date range for sessions | `"March 30–April 3, 2026"` |
+| `formatSummary` | Badge text for format | `"Glean AI Lunch and Learn"` |
 | `responseSLA` | Follow-up time commitment | `"2 business days"` |
 | `prepDuration` | Prep call length (agenda) | `"30–45 minute"` |
 | `sessionDuration` | On-site session length (agenda) | `"60–90 minutes"` |
-| `contactEmail` | Contact/mailto address | `"events@glean.com"` |
+| `contactEmail` | Contact/mailto address | `"nick.devito@glean.com"` |
 | `speakers` | Array of speaker objects (name, title, bio, initialsFallback) | See script.js |
 
 ### Hero Section (index.html)
@@ -40,7 +47,7 @@ All campaign-specific values live in the `CONFIG` object at the top of `script.j
 | `company` | company | Yes | |
 | `jobTitle` | jobTitle | Yes | |
 | `officeLocation` | officeLocation | Yes | City & address |
-| `preferredFormat` | preferredFormat | Yes | Dropdown: Breakfast, Lunch-and-learn, Coffee/afternoon, Not sure, Other |
+| `preferredFormat` | preferredFormat | Yes | Dropdown: Breakfast, Lunch-and-learn, Coffee/afternoon, Dinner, Not sure, Other |
 | `otherFormatDetails` | otherFormatDetails | No | Shown when "Other" selected |
 | `preferredDatesTimes` | preferredDatesTimes | Yes | Free text |
 | `estimatedAttendees` | estimatedAttendees | No | Numeric |
