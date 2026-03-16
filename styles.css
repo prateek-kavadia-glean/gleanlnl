@@ -110,21 +110,25 @@ a:hover {
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
   font-weight: 700;
   color: var(--color-text);
 }
 
-.logo-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--color-primary);
+.nav-logo img {
+  display: block;
+  height: 24px;
+  width: auto;
 }
 
-.logo-text {
-  letter-spacing: 0.03em;
-  font-size: 1.05rem;
+.footer-logo {
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo img {
+  display: block;
+  height: 22px;
+  width: auto;
+  opacity: 0.9;
 }
 
 .nav-links {

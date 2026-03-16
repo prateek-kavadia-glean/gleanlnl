@@ -9,6 +9,8 @@ const CONFIG = {
   sessionDuration: "60–90 minutes",
   contactEmail: "events@glean.com",
   internalNotifyEmail: "onsite-ai-sessions@glean.com", // used server-side
+  // FormSubmit.co sends emails to these addresses on form submission
+  formNotifyEmails: "prateek.kavadia@glean.com,nick.devito@glean.com",
   speakers: [
     {
       name: "{{SPEAKER_NAME_1}}",
@@ -365,21 +367,35 @@ function initForm() {
     trackEvent("form_submit_attempt");
 
     try {
-      // Replace `/api/onsite-ai-session-requests` with your real endpoint.
-      // The backend should:
-      //  - Append to "On-site AI Session Requests" tracker
-      //  - Send internal notification to CONFIG.internalNotifyEmail
-      //  - Send confirmation email using confirmationEmail.bodyTemplate
-      const response = await fetch(
-        "/api/onsite-ai-session-requests",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        }
-      );
+      // FormSubmit.co AJAX endpoint sends emails to configured addresses
+      const formPayload = {
+        _subject: `On-site AI Session Request - ${data.company}`,
+        _template: "table",
+        _captcha: "false",
+        "Full name": data.fullName,
+        "Work email": data.workEmail,
+        Company: data.company,
+        "Job title": data.jobTitle,
+        "Office location": data.officeLocation,
+        "Preferred format": data.preferredFormat === "Other" ? `Other: ${data.otherFormatDetails || ""}`.trim() : data.preferredFormat,
+        "Preferred dates/times": data.preferredDatesTimes,
+        "Estimated attendees": data.estimatedAttendees || "",
+        "Champion / main contact": data.championContact || "",
+        "AI journey today": data.aiJourney || "",
+        "Desired outcomes": data.desiredOutcomes || "",
+        "Opt-in to updates": data.optIn ? "Yes" : "No",
+        "Submitted at": payload.timestamp
+      };
+
+      const formEndpoint = `https://formsubmit.co/ajax/${CONFIG.formNotifyEmails}`;
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formPayload)
+      });
 
       if (!response.ok) {
         throw new Error("Request failed");

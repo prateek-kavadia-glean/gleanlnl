@@ -64,7 +64,9 @@ Form events are logged via `trackEvent()` in script.js: `form_validation_error`,
 
 ## Form Submission
 
-The form POSTs to `/api/onsite-ai-session-requests`. Replace this endpoint with your backend. The payload includes all form fields plus `confirmationEmail` template for the auto-reply.
+The form uses **FormSubmit.co** (AJAX endpoint) to send submissions as emails to `prateek.kavadia@glean.com` and `nick.devito@glean.com`. Configure recipients in `CONFIG.formNotifyEmails` in script.js.
+
+**First-time activation:** FormSubmit sends an activation email to the recipient addresses on first use. Each recipient must click the activation link before submissions will be delivered.
 
 On success, the form is replaced with an in-place confirmation card (no page reload).
 
