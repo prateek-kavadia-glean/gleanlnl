@@ -972,44 +972,108 @@ select[aria-invalid="true"] {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer */
+/* Footer - glean.com-style multi-column */
 .site-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 2rem 0 2.5rem;
+  padding: 3rem 0 2rem;
   background: #ffffff;
 }
 
-.footer-layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
+  gap: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-col {
+  min-width: 0;
+}
+
+.footer-brand {
+  max-width: 220px;
+}
+
+.footer-logo {
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo img {
+  display: block;
+  height: 22px;
+  width: auto;
+  opacity: 0.9;
 }
 
 .footer-tagline {
-  margin: 0 0 0.35rem;
+  margin: 0 0 1rem;
   font-weight: 700;
   font-size: 1rem;
 }
 
-.footer-copy {
-  margin: 0;
-  font-size: 0.9rem;
+.footer-address {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-muted);
-  max-width: 22rem;
+  line-height: 1.5;
 }
 
-.footer-meta {
+.footer-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.footer-bottom {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
   font-size: 0.85rem;
 }
 
-.footer-meta a {
-  color: #6b7280;
+.footer-legal a {
+  color: var(--color-muted);
 }
 
-.footer-meta a:hover {
+.footer-legal a:hover {
   color: var(--color-text);
   text-decoration: none;
 }
@@ -1043,8 +1107,25 @@ select[aria-invalid="true"] {
     padding: 1.4rem 1.4rem 1.6rem;
   }
 
-  .site-footer .footer-layout {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    max-width: none;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
