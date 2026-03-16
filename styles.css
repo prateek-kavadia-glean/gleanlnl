@@ -207,13 +207,20 @@ a:hover {
   background-color: rgba(129, 140, 248, 0.25);
 }
 
-/* Theme toggle - docs.glean.com style (sun/moon) */
+/* Theme toggle - floating at bottom-left, docs.glean.com style (sun/moon) */
+.theme-toggle-float {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 9999;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--nav-border);
   border-radius: var(--radius-pill);
@@ -221,6 +228,11 @@ a:hover {
   color: var(--color-text);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .theme-toggle-float .theme-toggle {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .theme-toggle:hover {
