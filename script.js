@@ -500,9 +500,62 @@ function initForm() {
   });
 }
 
+// --- Theme (docs.glean.com-style dark mode) -------------------------------
+
+const THEME_STORAGE_KEY = "glean-site-theme";
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function setStoredTheme(theme) {
+  try {
+    if (theme) localStorage.setItem(THEME_STORAGE_KEY, theme);
+    else localStorage.removeItem(THEME_STORAGE_KEY);
+  } catch (_) {}
+}
+
+function getSystemTheme() {
+  if (typeof window === "undefined" || !window.matchMedia) return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  if (theme === "dark") {
+    root.setAttribute("data-theme", "dark");
+  } else {
+    root.setAttribute("data-theme", "light");
+  }
+}
+
+function initTheme() {
+  const stored = getStoredTheme();
+  const theme = stored === "dark" || stored === "light" ? stored : getSystemTheme();
+  applyTheme(theme);
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = document.documentElement;
+    const current = root.getAttribute("data-theme") || getSystemTheme();
+    const next = current === "dark" ? "light" : "dark";
+    applyTheme(next);
+    setStoredTheme(next);
+  });
+}
+
 // --- Init ----------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initThemeToggle();
   applyConfigText();
   configureContactLink();
   initNavToggle();
