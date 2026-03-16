@@ -1,95 +1,66 @@
-# Implementation Notes: On-Site AI Strategy Session Landing Page
+# Implementation Notes: Remaining To-Do
 
-This document describes the structure, editable areas, and technical decisions for the landing page.
+Only items not yet done, with specific locations and steps.
 
-## Brand Alignment (glean.com)
+---
 
-Design follows [Glean brand resources](https://www.glean.com/brand-resources):
-- **Colors**: Primary Blue #343CED, Bright Green #D8FD49, Oatmeal #F6F3EB
-- **Typography**: PolySans (primary), DM Sans (fallback)
-- **Tagline**: "Work AI that works."
+## 1. Customer logos (social proof)
 
-## Editable Text Areas (Non-Developer)
+**Where:** `index.html` — section with class `social-proof`, inside `.logo-band` (six `<span class="customer-logo-text">` elements: Plaid, Pinterest, WealthSimple, Gainsight, Greenhouse, LaunchDarkly).
 
-### CONFIG (script.js)
-All campaign-specific values live in the `CONFIG` object at the top of `script.js`:
+**To-do:** Replace each `<span class="customer-logo-text">CompanyName</span>` with an `<img>` when you have logo assets, e.g.:
 
-| Key | Purpose | Example |
-|-----|---------|---------|
-| `cityRegion` | Target city/region for sessions | `"San Francisco Bay Area"` |
-| `availabilityWindow` | Date range for sessions | `"March 30–April 3, 2026"` |
-| `formatSummary` | Badge text for format | `"Lunch and Learn (breakfast, lunch, or coffee)"` |
-| `responseSLA` | Follow-up time commitment | `"2 business days"` |
-| `prepDuration` | Prep call length (agenda) | `"30–45 minute"` |
-| `sessionDuration` | On-site session length (agenda) | `"60–90 minutes"` |
-| `contactEmail` | Contact/mailto for “Questions? Contact us” | `"prateek.kavadia@glean.com"` |
-| `formNotifyEmails` | FormSubmit.co recipients (comma-separated) | `"prateek.kavadia@glean.com,tanner.cherry@glean.com,nick.devito@glean.com"` |
-| `speakers` | Array of speaker objects (name, title, bio, initialsFallback) | Prateek Kavadia, Tanner Cherry; see script.js |
-| `additionalSupport` | Optional copy for “support from” (e.g. Nick DeVito and Corporate team) | Used in speakers section copy |
+```html
+<img src="path/to/plaid-logo.svg" alt="Plaid" class="customer-logo" />
+```
 
-### Hero Section (index.html)
-- **Headline**: `<h1>` — Currently: "Host an on-site AI strategy session at your office"
-- **Subheadline**: `.hero-subtitle` — One-sentence value prop
-- **Badges**: Populated from CONFIG via `data-config-text` attributes
+Keep or remove the `.customer-logo-text` class if you keep any as text. Existing CSS: `.customer-logo` in `styles.css` (height 28px, grayscale, hover full color).
 
-### Agenda (index.html)
-- Prep duration and session duration are driven by `data-config-text="prepDuration"` and `data-config-text="sessionDuration"`
-- Timeline items (0:00–0:10, etc.) can be edited directly in the HTML
+---
 
-### Social Proof (index.html)
-- **Logo band**: Replace `.logo-placeholder` spans with `<img>` tags or SVG for customer logos
-- **Testimonials**: Edit `.testimonial-card` blockquotes — update quote text and footer attribution
+## 2. Speaker headshots
 
-## Form Field Mapping
+**Where:** `script.js` — `renderSpeakers()` builds speaker cards using only `initialsFallback` (avatar is a div with initials). CONFIG `speakers` in `script.js` has no `headshotUrl` property.
 
-| Field ID | Name | Required | Notes |
-|----------|------|----------|-------|
-| `fullName` | fullName | Yes | |
-| `workEmail` | workEmail | Yes | Validated; personal domains show warning |
-| `company` | company | Yes | |
-| `jobTitle` | jobTitle | Yes | |
-| `officeLocation` | officeLocation | Yes | City & address |
-| `preferredFormat` | preferredFormat | Yes | Dropdown: Breakfast, Lunch-and-learn, Coffee/afternoon, Dinner session, Not sure, Other |
-| `preferredDate` | preferredDate | No | Dropdown: March 30–April 3, 2026 options (optional) |
-| `otherFormatDetails` | otherFormatDetails | No | Shown when "Other" selected |
-| `preferredDatesTimes` | preferredDatesTimes | Yes | Free text |
-| `estimatedAttendees` | estimatedAttendees | No | Numeric |
-| `championContact` | championContact | No | |
-| `aiJourney` | aiJourney | No | Long text |
-| `desiredOutcomes` | desiredOutcomes | No | Long text |
-| `optIn` | optIn | No | Checkbox, unchecked by default |
+**To-do:**  
+- Add optional `headshotUrl` to each speaker in the `CONFIG.speakers` array (e.g. `headshotUrl: "assets/speakers/prateek.jpg"`).  
+- In `renderSpeakers()`, when `speaker.headshotUrl` is set, render an `<img class="speaker-avatar" src="..." alt="">` instead of the initials div; otherwise keep current initials behavior.
 
-## Analytics-Ready Selectors
+---
 
-Use these for tracking (e.g., GTM, Segment):
+## 3. Testimonials (real quotes)
 
-- `[data-analytics="hero_request_session"]` — Hero CTA
-- `[data-analytics="nav_request_session"]` — Nav CTA
-- `[data-analytics="how_it_works_request_session"]` — After How it works
-- `[data-analytics="what_youll_learn_request_session"]` — After What you'll learn
-- `[data-analytics="faq_request_session"]` — After FAQ
-- `[data-analytics="form_submit"]` — Submit button
+**Where:** `index.html` — two `<blockquote class="testimonial-card">` elements in the `.social-proof` section (after the logo band). Current content is generic placeholder copy and attribution (“IT Leader, Enterprise”, “Operations Director, Mid-Market”).
 
-Form events are logged via `trackEvent()` in script.js: `form_validation_error`, `form_submit_attempt`, `form_submit_success`, `form_submit_error`.
+**To-do:** Replace quote text and `<footer>` attribution with real customer testimonials and names/titles, or remove the testimonials block if not used.
 
-## Form Submission
+---
 
-The form uses **FormSubmit.co** (AJAX endpoint) to send submissions as emails to `prateek.kavadia@glean.com`, `tanner.cherry@glean.com`, and `nick.devito@glean.com`. Configure recipients in `CONFIG.formNotifyEmails` in script.js.
+## 4. Analytics wiring
 
-**First-time activation:** FormSubmit sends an activation email to the recipient addresses on first use. Each recipient must click the activation link before submissions will be delivered.
+**Where:** `script.js` — `trackEvent(name, payload)` currently only calls `console.debug("[analytics]", name, payload)`.
 
-On success, the form is replaced with an in-place confirmation card (no page reload).
+**To-do:** Connect to your analytics (e.g. GTM, Segment) inside `trackEvent()`. Use these for key events:
 
-## Current campaign (as configured)
+- CTA clicks: `[data-analytics="hero_request_session"]`, `nav_request_session`, `how_it_works_request_session`, `what_youll_learn_request_session`, `faq_request_session`, `footer_cta_request_session`
+- Form: `form_submit` (button), and in code: `form_validation_error`, `form_submit_attempt`, `form_submit_success`, `form_submit_error`
 
-- **Dates**: March 30–April 3, 2026
-- **Region**: San Francisco Bay Area
-- **Hosts**: Prateek Kavadia, Tanner Cherry (Solutions Engineers). Additional support: Nick DeVito (Corporate Sales Director) and the Corporate team.
-- **Form routing**: Submissions go to prateek.kavadia@glean.com, tanner.cherry@glean.com, nick.devito@glean.com via FormSubmit.co.
+---
 
-## Assumptions
+## 5. FormSubmit.co first-use activation
 
-1. **Backend**: No backend is included. FormSubmit.co sends email to the three recipients; wire to CRM/other later if needed.
-2. **Logos**: Social proof uses customer names as text; replace with real logos if desired.
-3. **Speakers**: Use `initialsFallback` when headshots are not available; add optional `headshotUrl` to CONFIG for future image support.
-4. **Accessibility**: Form uses `aria-invalid`, `aria-describedby`, and proper labels. Ensure sufficient color contrast (WCAG AA).
+**Not a code change.** FormSubmit.co sends an activation email to each address in `CONFIG.formNotifyEmails` on first submit. Prateek, Tanner, and Nick must each click the activation link once before submissions are delivered. After that, form submissions work as configured.
+
+---
+
+## 6. Optional: Backend / CRM
+
+Form submissions are sent only via FormSubmit.co (AJAX to `https://formsubmit.co/ajax/{emails}`). There is no internal backend or CRM write.
+
+**To-do (optional):** If you want submissions in a CRM or spreadsheet, either replace the FormSubmit.co fetch in `script.js` with your endpoint or add a serverless function that receives the same payload and forwards it.
+
+---
+
+## 7. Optional: Accessibility check
+
+**To-do:** Run an accessibility pass (e.g. axe or Lighthouse) and fix any issues. Pay attention to color contrast (WCAG AA) for text and buttons; form fields already use `aria-invalid`, `aria-describedby`, and associated labels.
