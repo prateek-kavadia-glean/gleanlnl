@@ -2,35 +2,39 @@
 // Non-technical teammates can safely edit values in CONFIG.
 const CONFIG = {
   cityRegion: "San Francisco Bay Area",
-  availabilityWindow: "March 24–28, 2025", // EDITABLE: e.g. "the week of March 24, 2025"
-  formatSummary: "On-site AI strategy sessions (breakfast, lunch, or coffee)",
+  availabilityWindow: "March 30–April 3, 2026",
+  formatSummary: "Lunch and Learn (breakfast, lunch, or coffee)",
   responseSLA: "2 business days",
   prepDuration: "30–45 minute",
   sessionDuration: "60–90 minutes",
-  contactEmail: "events@glean.com",
+  contactEmail: "prateek.kavadia@glean.com",
   internalNotifyEmail: "onsite-ai-sessions@glean.com", // used server-side
   // FormSubmit.co sends emails to these addresses on form submission
-  formNotifyEmails: "prateek.kavadia@glean.com,nick.devito@glean.com",
+  formNotifyEmails: "prateek.kavadia@glean.com,tanner.cherry@glean.com,nick.devito@glean.com",
+  // Optional: preferred date options for form dropdown (March 30 - April 3, 2026)
+  preferredDateOptions: [
+    { value: "Monday, March 30", label: "Monday, March 30" },
+    { value: "Tuesday, March 31", label: "Tuesday, March 31" },
+    { value: "Wednesday, April 1", label: "Wednesday, April 1" },
+    { value: "Thursday, April 2", label: "Thursday, April 2" },
+    { value: "Friday, April 3", label: "Friday, April 3" }
+  ],
   speakers: [
     {
-      name: "{{SPEAKER_NAME_1}}",
+      name: "Prateek Kavadia",
       title: "Solutions Engineer, Glean",
-      initialsFallback: "SE",
-      bio: "Works with leading enterprises to design and deploy AI-driven workflows across engineering, IT, and business teams."
+      initialsFallback: "PK",
+      bio: "Focused on practical technical validation, live demos, and helping teams connect AI strategy to real workflows. Part of the Corporate Solutions Engineering team."
     },
     {
-      name: "{{SPEAKER_NAME_2}}",
-      title: "Customer Strategy Lead, Glean",
-      initialsFallback: "CS",
-      bio: "Partners with customers on AI roadmaps that balance quick wins with long-term governance, security, and change management."
-    },
-    {
-      name: "{{SPEAKER_NAME_3}}",
-      title: "Work AI Specialist, Glean",
-      initialsFallback: "AI",
-      bio: "Helps organizations translate AI trends into practical agents, automations, and cross-functional use cases."
+      name: "Tanner Cherry",
+      title: "Solutions Engineer, Glean",
+      initialsFallback: "TC",
+      bio: "Partners with the Corporate team to run high-signal in-person sessions that feel practical and useful to the room. Brings Glean to life through tailored demos and use case discussions."
     }
-  ]
+  ],
+  // Additional support (not listed as speaker; used in form routing and optional copy)
+  additionalSupport: "Nick DeVito (Corporate Sales Director) and the Corporate team"
 };
 
 // --- Helpers -------------------------------------------------------------
@@ -224,6 +228,7 @@ function initForm() {
       .querySelectorAll("input, textarea, select")
       .forEach((el) => el.removeAttribute("aria-invalid"));
 
+    const preferredDateEl = form.querySelector("#preferredDate");
     const data = {
       fullName: form.fullName.value.trim(),
       workEmail: form.workEmail.value.trim(),
@@ -232,6 +237,7 @@ function initForm() {
       officeLocation: form.officeLocation.value.trim(),
       preferredFormat: form.preferredFormat.value,
       otherFormatDetails: form.otherFormatDetails.value.trim(),
+      preferredDate: preferredDateEl ? preferredDateEl.value.trim() : "",
       preferredDatesTimes: form.preferredDatesTimes.value.trim(),
       estimatedAttendees: form.estimatedAttendees.value,
       championContact: form.championContact.value.trim(),
@@ -332,6 +338,7 @@ function initForm() {
         data.preferredFormat === "Other"
           ? `Other: ${data.otherFormatDetails || ""}`.trim()
           : data.preferredFormat,
+      preferredDate: data.preferredDate || null,
       preferredDatesTimes: data.preferredDatesTimes,
       estimatedAttendees: data.estimatedAttendees || null,
       championContact: data.championContact || null,
@@ -378,6 +385,7 @@ function initForm() {
         "Job title": data.jobTitle,
         "Office location": data.officeLocation,
         "Preferred format": data.preferredFormat === "Other" ? `Other: ${data.otherFormatDetails || ""}`.trim() : data.preferredFormat,
+        "Preferred date": data.preferredDate || "",
         "Preferred dates/times": data.preferredDatesTimes,
         "Estimated attendees": data.estimatedAttendees || "",
         "Champion / main contact": data.championContact || "",

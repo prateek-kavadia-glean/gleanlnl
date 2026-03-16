@@ -18,12 +18,14 @@ All campaign-specific values live in the `CONFIG` object at the top of `script.j
 |-----|---------|---------|
 | `cityRegion` | Target city/region for sessions | `"San Francisco Bay Area"` |
 | `availabilityWindow` | Date range for sessions | `"March 30–April 3, 2026"` |
-| `formatSummary` | Badge text for format | `"Glean AI Lunch and Learn"` |
+| `formatSummary` | Badge text for format | `"Lunch and Learn (breakfast, lunch, or coffee)"` |
 | `responseSLA` | Follow-up time commitment | `"2 business days"` |
 | `prepDuration` | Prep call length (agenda) | `"30–45 minute"` |
 | `sessionDuration` | On-site session length (agenda) | `"60–90 minutes"` |
-| `contactEmail` | Contact/mailto address | `"nick.devito@glean.com"` |
-| `speakers` | Array of speaker objects (name, title, bio, initialsFallback) | See script.js |
+| `contactEmail` | Contact/mailto for “Questions? Contact us” | `"prateek.kavadia@glean.com"` |
+| `formNotifyEmails` | FormSubmit.co recipients (comma-separated) | `"prateek.kavadia@glean.com,tanner.cherry@glean.com,nick.devito@glean.com"` |
+| `speakers` | Array of speaker objects (name, title, bio, initialsFallback) | Prateek Kavadia, Tanner Cherry; see script.js |
+| `additionalSupport` | Optional copy for “support from” (e.g. Nick DeVito and Corporate team) | Used in speakers section copy |
 
 ### Hero Section (index.html)
 - **Headline**: `<h1>` — Currently: "Host an on-site AI strategy session at your office"
@@ -47,7 +49,8 @@ All campaign-specific values live in the `CONFIG` object at the top of `script.j
 | `company` | company | Yes | |
 | `jobTitle` | jobTitle | Yes | |
 | `officeLocation` | officeLocation | Yes | City & address |
-| `preferredFormat` | preferredFormat | Yes | Dropdown: Breakfast, Lunch-and-learn, Coffee/afternoon, Dinner, Not sure, Other |
+| `preferredFormat` | preferredFormat | Yes | Dropdown: Breakfast, Lunch-and-learn, Coffee/afternoon, Dinner session, Not sure, Other |
+| `preferredDate` | preferredDate | No | Dropdown: March 30–April 3, 2026 options (optional) |
 | `otherFormatDetails` | otherFormatDetails | No | Shown when "Other" selected |
 | `preferredDatesTimes` | preferredDatesTimes | Yes | Free text |
 | `estimatedAttendees` | estimatedAttendees | No | Numeric |
@@ -71,15 +74,22 @@ Form events are logged via `trackEvent()` in script.js: `form_validation_error`,
 
 ## Form Submission
 
-The form uses **FormSubmit.co** (AJAX endpoint) to send submissions as emails to `prateek.kavadia@glean.com` and `nick.devito@glean.com`. Configure recipients in `CONFIG.formNotifyEmails` in script.js.
+The form uses **FormSubmit.co** (AJAX endpoint) to send submissions as emails to `prateek.kavadia@glean.com`, `tanner.cherry@glean.com`, and `nick.devito@glean.com`. Configure recipients in `CONFIG.formNotifyEmails` in script.js.
 
 **First-time activation:** FormSubmit sends an activation email to the recipient addresses on first use. Each recipient must click the activation link before submissions will be delivered.
 
 On success, the form is replaced with an in-place confirmation card (no page reload).
 
+## Current campaign (as configured)
+
+- **Dates**: March 30–April 3, 2026
+- **Region**: San Francisco Bay Area
+- **Hosts**: Prateek Kavadia, Tanner Cherry (Solutions Engineers). Additional support: Nick DeVito (Corporate Sales Director) and the Corporate team.
+- **Form routing**: Submissions go to prateek.kavadia@glean.com, tanner.cherry@glean.com, nick.devito@glean.com via FormSubmit.co.
+
 ## Assumptions
 
-1. **Backend**: No backend is included. Wire the form to your CRM, spreadsheet, or email service.
-2. **Logos**: Social proof uses placeholder text; replace with real customer logos.
+1. **Backend**: No backend is included. FormSubmit.co sends email to the three recipients; wire to CRM/other later if needed.
+2. **Logos**: Social proof uses customer names as text; replace with real logos if desired.
 3. **Speakers**: Use `initialsFallback` when headshots are not available; add optional `headshotUrl` to CONFIG for future image support.
 4. **Accessibility**: Form uses `aria-invalid`, `aria-describedby`, and proper labels. Ensure sufficient color contrast (WCAG AA).

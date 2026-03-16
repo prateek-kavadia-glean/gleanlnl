@@ -462,10 +462,10 @@
     >
       <div class="container">
         <div class="section-header">
-          <h2>Speakers</h2>
+          <h2>On-site hosts</h2>
           <p>
-            Sessions are led by practitioners who work with leading
-            organizations on AI at work every day.
+            Sessions are led by Prateek Kavadia and Tanner Cherry, with support
+            from Nick DeVito and the Corporate team.
           </p>
         </div>
 
@@ -497,15 +497,15 @@
             <div>
               <h3>When</h3>
               <p>
-                Limited availability the week of
-                <span data-config-text="availabilityWindow"></span>
+                Limited availability
+                <span data-config-text="availabilityWindow"></span>.
               </p>
             </div>
             <div>
               <h3>Format</h3>
               <p>
-                Breakfast, lunch, coffee, or afternoon session
-                (60–90 minutes).
+                Lunch and Learn (breakfast, lunch, or coffee)
+                — 60–90 minutes at your office.
               </p>
             </div>
             <div>
@@ -713,6 +713,7 @@
                   <option value="Coffee / afternoon session">
                     Coffee / afternoon session
                   </option>
+                  <option value="Dinner session">Dinner session</option>
                   <option value="Not sure / open to options">
                     Not sure / open to options
                   </option>
@@ -737,6 +738,21 @@
               </div>
 
               <div class="field-group">
+                <label for="preferredDate">Preferred date</label>
+                <select id="preferredDate" name="preferredDate">
+                  <option value="">Select a date (optional)</option>
+                  <option value="Monday, March 30">Monday, March 30</option>
+                  <option value="Tuesday, March 31">Tuesday, March 31</option>
+                  <option value="Wednesday, April 1">Wednesday, April 1</option>
+                  <option value="Thursday, April 2">Thursday, April 2</option>
+                  <option value="Friday, April 3">Friday, April 3</option>
+                </select>
+                <p class="field-hint">
+                  Sessions available March 30–April 3, 2026 in the Bay Area.
+                </p>
+              </div>
+
+              <div class="field-group">
                 <label for="preferredDatesTimes">
                   Preferred dates and times *
                 </label>
@@ -749,9 +765,8 @@
                 <p class="field-hint">
                   We’re in
                   <span data-config-text="cityRegion"></span>
-                  the week of
                   <span data-config-text="availabilityWindow"></span>.
-                  Share a few options that work for your team.
+                  Share dates or windows that work for your team.
                 </p>
                 <p
                   class="field-error"
