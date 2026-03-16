@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>On-Site AI Strategy Sessions | Glean</title>
+  <meta
+    name="description"
+    content="Host an AI strategy session at your office. Glean will come onsite for a breakfast, lunch, or coffee session to unpack the AI landscape, share real customer workflows, and help you plan what’s next."
+  />
+  <link rel="icon" href="https://www.glean.com/favicon.ico" />
+  <!-- Typography: PolySans where available, fallback to DM Sans -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a
+        href="https://www.glean.com"
+        class="nav-logo"
+        aria-label="Glean home"
+      >
+        <!-- Simple text logo; replace with SVG/logo asset if desired -->
+        <span class="logo-mark"></span>
+        <span class="logo-text">Glean</span>
+      </a>
+      <nav
+        class="nav-links"
+        aria-label="Primary navigation"
+      >
+        <a href="#about">About the sessions</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#what-youll-learn">What you’ll learn</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#faq">FAQ</a>
+        <a
+          href="#request-session"
+          class="nav-cta"
+          data-analytics="nav_request_session"
+        >
+          Request a session
+        </a>
+      </nav>
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            On-site AI strategy sessions
+          </p>
+          <h1>
+            On-Site AI Deep-Dive:
+            <span class="headline-break">
+              Work AI that works for your team
+            </span>
+          </h1>
+          <p class="hero-subtitle">
+            We’ll come to your office for a breakfast, lunch, or coffee session
+            to unpack the AI landscape, share real customer workflows, and help
+            you plan what’s next.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">
+              <span class="badge-label">Region</span>
+              <span
+                class="badge-value"
+                data-config-text="cityRegion"
+              ></span>
+            </span>
+            <span class="badge">
+              <span class="badge-label">Availability</span>
+              <span
+                class="badge-value"
+                data-config-text="availabilityWindow"
+              ></span>
+            </span>
+            <span class="badge badge-accent">
+              <span class="badge-label">Format</span>
+              <span
+                class="badge-value"
+                data-config-text="formatSummary"
+              ></span>
+            </span>
+          </div>
+
+          <div class="hero-actions">
+            <a
+              href="#request-session"
+              class="btn btn-primary"
+              data-analytics="hero_request_session"
+            >
+              Request an on-site AI session
+            </a>
+            <a
+              href="#contact"
+              class="hero-link"
+              id="contact-link"
+            >
+              Questions? Contact us
+            </a>
+          </div>
+
+          <p class="hero-secondary-note">
+            We’ll meet you at your office — at the time of day that works best
+            for your team.
+          </p>
+        </div>
+        <aside class="hero-panel">
+          <div class="hero-panel-card">
+            <h2>Why host an on-site AI session?</h2>
+            <ul class="hero-list">
+              <li>
+                Understand the current state of AI at work and what’s actually
+                working for teams like yours.
+              </li>
+              <li>
+                See concrete workflows and agents your peers are using in
+                production.
+              </li>
+              <li>
+                Leave with a clear, practical structure for your own AI roadmap.
+              </li>
+            </ul>
+            <p class="hero-panel-note">
+              Designed for cross-functional groups across IT, engineering,
+              operations, and business teams.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About the sessions -->
+    <section
+      id="about"
+      class="section section-alt"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>About the sessions</h2>
+          <p>
+            Glean is offering a limited number of on-site AI strategy sessions
+            where a Glean Solutions Engineer and account team visit your office
+            to dig into AI at work with your stakeholders.
+          </p>
+        </div>
+
+        <div class="two-column">
+          <div class="column">
+            <p>
+              Each session is designed to meet you where you are in your AI
+              journey—whether you’re just starting to explore AI at work or
+              refining an existing roadmap. The format is flexible:
+              breakfast briefing, lunch-and-learn, coffee chat, or
+              afternoon working session.
+            </p>
+          </div>
+          <div class="column">
+            <ul class="checklist">
+              <li>
+                We join you in your office for a focused
+                <strong>60–90 minute session</strong>.
+              </li>
+              <li>
+                We tailor content based on your current tools, processes, and
+                priorities.
+              </li>
+              <li>
+                We use real customer examples and live product walkthroughs to
+                ground the discussion.
+              </li>
+              <li>
+                You leave with <strong>clearer next steps</strong> for your AI
+                plans and pilots.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section
+      id="how-it-works"
+      class="section"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>How it works</h2>
+          <p>
+            A simple, two-stage engagement designed to align on goals and then
+            bring AI planning to your office.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Prep session with your champion</h3>
+            <p class="step-meta">
+              30–45 minutes · Remote or in-person
+            </p>
+            <ul>
+              <li>
+                Meet with a customer champion and a Glean Solutions Engineer.
+              </li>
+              <li>
+                Align on your current tools, workflows, AI initiatives, and
+                success metrics.
+              </li>
+              <li>
+                Decide which teams, processes, and use cases to prioritize in
+                the on-site session.
+              </li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>On-site AI session at your office</h3>
+            <p class="step-meta">
+              60–90 minutes · Breakfast, lunch, or coffee
+            </p>
+            <ul>
+              <li>
+                Host a broader group from IT, engineering, operations, HR, and
+                business stakeholders.
+              </li>
+              <li>
+                Explore the AI landscape at work today and how teams are using
+                Work AI.
+              </li>
+              <li>
+                Walk through customer-proven workflows and agents running in
+                production.
+              </li>
+              <li>
+                Discuss your environment, data sources, and constraints — in
+                plain language.
+              </li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Follow-up and next steps</h3>
+            <p class="step-meta">
+              Optional recap and planning
+            </p>
+            <ul>
+              <li>
+                Receive an optional written recap or action list from the
+                session.
+              </li>
+              <li>
+                Get suggestions for pilot ideas, phased rollout, or deeper
+                evaluation.
+              </li>
+              <li>
+                Align on where Work AI can drive the most impact for your teams.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- What you'll learn -->
+    <section
+      id="what-youll-learn"
+      class="section section-alt"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>What you’ll learn</h2>
+          <p>
+            Bring clarity to your AI strategy with concrete examples, planning
+            frameworks, and space for your team’s questions.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="info-card">
+            <h3>The real state of AI at work</h3>
+            <p>
+              Where AI delivers value today, where it struggles, and how Work AI
+              fits alongside your existing tools, systems, and workflows.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Customer-proven workflows</h3>
+            <p>
+              Concrete examples of searches, agents, and automations that Glean
+              customers are using across engineering, support, IT, sales, and
+              more.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Your path to impact</h3>
+            <p>
+              A practical way to prioritize use cases, sequence pilots, and
+              connect AI outcomes to your team’s goals and metrics.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Governance, security, and change</h3>
+            <p>
+              How to roll out AI in a way that respects permissions,
+              compliance, and employee trust—while keeping teams productive.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample agenda -->
+    <section
+      id="agenda"
+      class="section"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Sample agenda</h2>
+          <p>
+            A flexible agenda you can adapt to your teams, tools, and time
+            constraints.
+          </p>
+        </div>
+
+        <div class="agenda-layout">
+          <div class="agenda-block">
+            <h3>Before the on-site</h3>
+            <p>
+              {{PREP_DURATION}} prep session with your champion to align on:
+            </p>
+            <ul class="checklist">
+              <li>Your current tools and data sources</li>
+              <li>Key workflows and processes</li>
+              <li>Teams and stakeholders to invite</li>
+              <li>Desired outcomes for the session</li>
+            </ul>
+          </div>
+
+          <div class="agenda-block">
+            <h3>On-site session (example – lunch)</h3>
+            <p>{{SESSION_DURATION}} at your office, over lunch.</p>
+            <ol class="timeline">
+              <li>
+                <span class="time">0:00–0:10</span>
+                <span class="label">Arrival, intros, and goals for the session</span>
+              </li>
+              <li>
+                <span class="time">0:10–0:25</span>
+                <span class="label">
+                  The AI landscape at work: trends and patterns we’re seeing
+                </span>
+              </li>
+              <li>
+                <span class="time">0:25–0:45</span>
+                <span class="label">
+                  Customer workflows &amp; live examples with Glean
+                </span>
+              </li>
+              <li>
+                <span class="time">0:45–1:05</span>
+                <span class="label">
+                  Mapping AI to your environment: use cases and teams
+                </span>
+              </li>
+              <li>
+                <span class="time">1:05–1:15</span>
+                <span class="label">
+                  Q&amp;A and proposed next steps
+                </span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who should join -->
+    <section
+      id="who-should-join"
+      class="section section-alt"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Who should join</h2>
+          <p>
+            We recommend bringing a mix of technical and business stakeholders
+            who are responsible for AI decisions and adoption.
+          </p>
+        </div>
+
+        <div class="pill-grid">
+          <span class="pill">IT / Platform / Security leaders</span>
+          <span class="pill">Engineering or Product leaders</span>
+          <span class="pill">Operations or Support leaders</span>
+          <span class="pill">
+            Knowledge, HR, or transformation teams
+          </span>
+          <span class="pill">
+            An internal AI / automation champion
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers -->
+    <section
+      id="speakers"
+      class="section"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Speakers</h2>
+          <p>
+            Sessions are led by practitioners who work with leading
+            organizations on AI at work every day.
+          </p>
+        </div>
+
+        <div
+          class="cards-grid speakers-grid"
+          id="speakers-grid"
+        >
+          <!-- Speakers populated from CONFIG via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Logistics -->
+    <section
+      id="logistics"
+      class="section section-alt"
+    >
+      <div class="container">
+        <div class="logistics-card">
+          <h2>Logistics at a glance</h2>
+          <div class="logistics-grid">
+            <div>
+              <h3>Where</h3>
+              <p>
+                Your office in
+                <span data-config-text="cityRegion"></span>
+              </p>
+            </div>
+            <div>
+              <h3>When</h3>
+              <p>
+                Limited availability the week of
+                <span data-config-text="availabilityWindow"></span>
+              </p>
+            </div>
+            <div>
+              <h3>Format</h3>
+              <p>
+                Breakfast, lunch, coffee, or afternoon session
+                (60–90 minutes).
+              </p>
+            </div>
+            <div>
+              <h3>What’s included</h3>
+              <p>
+                On-site session with a Glean Solutions Engineer and account
+                team; food or refreshments provided where applicable.
+              </p>
+            </div>
+          </div>
+          <p class="logistics-note">
+            We’ll coordinate timing, format, and attendees with your champion
+            after you request a session.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Request session / Registration form -->
+    <section
+      id="request-session"
+      class="section"
+      aria-labelledby="request-session-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2 id="request-session-heading">
+            Request an on-site AI strategy session
+          </h2>
+          <p>
+            Share a few details about your team and preferred timing. We’ll
+            follow up to schedule a short prep conversation and confirm your
+            on-site session.
+          </p>
+        </div>
+
+        <div class="form-layout">
+          <div class="form-summary">
+            <h3>What you can expect</h3>
+            <ul class="checklist">
+              <li>
+                A brief prep call with your internal champion to align on goals.
+              </li>
+              <li>
+                A tailored on-site session at your office, focused on your
+                environment and teams.
+              </li>
+              <li>
+                Practical AI planning support—not just a generic demo.
+              </li>
+            </ul>
+            <h3 class="form-summary-subheading">
+              How the process works
+            </h3>
+            <ol class="numbered-list">
+              <li>Submit your request with dates and format preferences.</li>
+              <li>
+                We reach out within
+                <span data-config-text="responseSLA"></span>
+                to schedule a prep conversation.
+              </li>
+              <li>
+                We confirm the final agenda and host the on-site session at
+                your office.
+              </li>
+            </ol>
+          </div>
+
+          <div class="form-card">
+            <form
+              id="session-request-form"
+              novalidate
+              aria-describedby="form-error-summary"
+            >
+              <div
+                id="form-error-summary"
+                class="form-error-summary"
+                role="alert"
+                aria-live="polite"
+              ></div>
+
+              <div class="field-group">
+                <label for="fullName">Full name *</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  autocomplete="name"
+                  required
+                />
+                <p class="field-error" data-error-for="fullName"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="workEmail">Work email *</label>
+                <input
+                  type="email"
+                  id="workEmail"
+                  name="workEmail"
+                  autocomplete="email"
+                  required
+                />
+                <p class="field-hint">
+                  Please use your company email. Personal email domains may
+                  delay follow-up.
+                </p>
+                <p class="field-warning" data-warning-for="workEmail"></p>
+                <p class="field-error" data-error-for="workEmail"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="company">Company *</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  autocomplete="organization"
+                  required
+                />
+                <p class="field-error" data-error-for="company"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="jobTitle">Job title / role *</label>
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  autocomplete="organization-title"
+                  required
+                />
+                <p class="field-error" data-error-for="jobTitle"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="officeLocation">
+                  Office location (city &amp; address) *
+                </label>
+                <textarea
+                  id="officeLocation"
+                  name="officeLocation"
+                  rows="2"
+                  required
+                ></textarea>
+                <p class="field-hint">
+                  Where would you like to host the on-site session?
+                </p>
+                <p class="field-error" data-error-for="officeLocation"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="preferredFormat">
+                  Preferred session format *
+                </label>
+                <select
+                  id="preferredFormat"
+                  name="preferredFormat"
+                  required
+                >
+                  <option value="">Select format</option>
+                  <option value="Breakfast session">
+                    Breakfast session
+                  </option>
+                  <option value="Lunch-and-learn">
+                    Lunch-and-learn
+                  </option>
+                  <option value="Coffee / afternoon session">
+                    Coffee / afternoon session
+                  </option>
+                  <option value="Other">Other</option>
+                </select>
+                <p class="field-error" data-error-for="preferredFormat"></p>
+              </div>
+
+              <div
+                class="field-group"
+                id="otherFormatGroup"
+                hidden
+              >
+                <label for="otherFormatDetails">
+                  If “Other”, briefly describe
+                </label>
+                <input
+                  type="text"
+                  id="otherFormatDetails"
+                  name="otherFormatDetails"
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="preferredDatesTimes">
+                  Preferred dates and times *
+                </label>
+                <textarea
+                  id="preferredDatesTimes"
+                  name="preferredDatesTimes"
+                  rows="2"
+                  required
+                ></textarea>
+                <p class="field-hint">
+                  We’re in
+                  <span data-config-text="cityRegion"></span>
+                  the week of
+                  <span data-config-text="availabilityWindow"></span>.
+                  Share a few options that work for your team.
+                </p>
+                <p
+                  class="field-error"
+                  data-error-for="preferredDatesTimes"
+                ></p>
+              </div>
+
+              <div class="field-group">
+                <label for="estimatedAttendees">
+                  Estimated number of attendees
+                </label>
+                <input
+                  type="number"
+                  id="estimatedAttendees"
+                  name="estimatedAttendees"
+                  min="1"
+                  inputmode="numeric"
+                />
+                <p class="field-hint">
+                  A typical range is 6–20 attendees.
+                </p>
+                <p
+                  class="field-error"
+                  data-error-for="estimatedAttendees"
+                ></p>
+              </div>
+
+              <div class="field-group">
+                <label for="championContact">
+                  Internal champion / main point of contact
+                </label>
+                <textarea
+                  id="championContact"
+                  name="championContact"
+                  rows="2"
+                ></textarea>
+                <p class="field-hint">
+                  Who will help coordinate this session on your side? (Name and
+                  role.)
+                </p>
+              </div>
+
+              <div class="field-group">
+                <label for="aiJourney">
+                  What does your AI journey look like today?
+                </label>
+                <textarea
+                  id="aiJourney"
+                  name="aiJourney"
+                  rows="3"
+                ></textarea>
+                <p class="field-hint">
+                  Share a bit about where you are with AI at work (experiments,
+                  pilots, or production use).
+                </p>
+              </div>
+
+              <div class="field-group">
+                <label for="desiredOutcomes">
+                  What would you most like to get out of this session?
+                </label>
+                <textarea
+                  id="desiredOutcomes"
+                  name="desiredOutcomes"
+                  rows="3"
+                ></textarea>
+                <p class="field-hint">
+                  This helps us tailor both the prep session and on-site
+                  content.
+                </p>
+              </div>
+
+              <div class="field-group checkbox-group">
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    id="optIn"
+                    name="optIn"
+                  />
+                  <span>
+                    I’d like to receive occasional updates about Glean and
+                    future events.
+                  </span>
+                </label>
+              </div>
+
+              <p class="consent-text">
+                By submitting, you agree to our
+                <a
+                  href="https://www.glean.com/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>.
+              </p>
+
+              <button
+                type="submit"
+                class="btn btn-primary btn-full"
+                data-analytics="form_submit"
+              >
+                Submit request
+              </button>
+
+              <p
+                id="form-success-message"
+                class="form-success-message"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+      id="faq"
+      class="section section-alt"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently asked questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>What formats do you offer?</summary>
+            <p>
+              We offer breakfast briefings, lunch-and-learns, coffee chats, and
+              afternoon working sessions. We’ll work with you to choose the
+              format that best fits your culture and schedule.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where do the sessions take place?</summary>
+            <p>
+              All sessions take place at your office in the selected
+              city or region. We’ll confirm the exact location with your
+              champion during the prep conversation.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is there a cost to host a session?</summary>
+            <p>
+              The on-site AI strategy session itself is complimentary for
+              invited organizations. If catering or additional services are
+              involved, we’ll align on details in advance.
+            </p>
+          </details>
+
+          <details>
+            <summary>How many people should attend?</summary>
+            <p>
+              We typically recommend 6–20 attendees, including a mix of
+              technical and business stakeholders. Smaller working groups are
+              welcome as well.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Do we need any specific tools set up in advance?
+            </summary>
+            <p>
+              No special setup is required. The prep session will cover your
+              existing tools and environment. The on-site session focuses on
+              discussion, examples, and planning, with product views where
+              relevant.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Will you cover our specific environment and questions?
+            </summary>
+            <p>
+              Yes. The goal of the prep session is to understand your tools,
+              data sources, and priorities so that the on-site conversation
+              speaks directly to your context and teams.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              How soon will we hear back after submitting a request?
+            </summary>
+            <p>
+              You can expect to hear from us within
+              <span data-config-text="responseSLA"></span>
+              business days to coordinate your prep session and confirm
+              next steps.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact anchor (for hero link) -->
+    <section
+      id="contact"
+      class="section contact-anchor"
+      aria-hidden="true"
+    ></section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <div class="footer-main">
+        <p class="footer-tagline">
+          Work AI that works.
+        </p>
+        <p class="footer-copy">
+          Bring AI strategy, real-world workflows, and practical planning into
+          the room with your teams — right at your office.
+        </p>
+      </div>
+      <div class="footer-meta">
+        <a
+          href="https://www.glean.com/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy Policy
+        </a>
+        <a
+          href="https://www.glean.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          glean.com
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
