@@ -5,8 +5,8 @@
   --color-text: #000000;
   --color-muted: #555555;
   --color-border-subtle: #e2ddd2;
-  --color-primary: #343ced;
-  --color-primary-hover: #252bd1;
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1e40af;
   --color-accent: #d8fd49;
   --color-error: #b3261e;
   --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.06);
@@ -82,6 +82,11 @@ a:hover {
   font-size: 0.98rem;
 }
 
+.section-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
 /* Header / Nav */
 .site-header {
   position: sticky;
@@ -142,13 +147,13 @@ a:hover {
 .nav-cta {
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(52, 60, 237, 0.25);
+  border: 1px solid rgba(29, 78, 216, 0.25);
   color: var(--color-primary);
-  background-color: #f3f4ff;
+  background-color: #eff6ff;
 }
 
 .nav-cta:hover {
-  background-color: #e1e3ff;
+  background-color: #dbeafe;
 }
 
 .nav-toggle {
@@ -181,7 +186,7 @@ a:hover {
     ),
     radial-gradient(
       circle at bottom right,
-      rgba(52, 60, 237, 0.15),
+      rgba(29, 78, 216, 0.12),
       transparent 55%
     );
 }
@@ -330,24 +335,24 @@ a:hover {
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 10px 20px rgba(52, 60, 237, 0.25);
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.25);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   text-decoration: none;
-  box-shadow: 0 16px 35px rgba(52, 60, 237, 0.32);
+  box-shadow: 0 16px 35px rgba(29, 78, 216, 0.32);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: #ffffff;
   color: var(--color-primary);
-  border-color: rgba(52, 60, 237, 0.36);
+  border-color: rgba(29, 78, 216, 0.36);
 }
 
 .btn-secondary:hover {
-  background-color: #f5f7ff;
+  background-color: #eff6ff;
   text-decoration: none;
 }
 
@@ -424,7 +429,7 @@ a:hover {
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: #eef0ff;
+  background: #dbeafe;
   color: var(--color-primary);
   display: inline-flex;
   align-items: center;
@@ -697,7 +702,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid rgba(52, 60, 237, 0.2);
+  outline: 2px solid rgba(29, 78, 216, 0.2);
   outline-offset: 1px;
   border-color: var(--color-primary);
 }
@@ -764,6 +769,85 @@ select[aria-invalid="true"] {
   color: #166534;
 }
 
+.form-success-card {
+  padding: 1.5rem 0;
+}
+
+.form-success-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.form-success-card p {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.form-success-card-contact {
+  margin-top: 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Social proof */
+.social-proof {
+  padding: 3rem 0;
+}
+
+.social-proof-eyebrow {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  margin: 0 0 1.25rem;
+}
+
+.logo-band {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.logo-placeholder {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  padding: 0.5rem 1rem;
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.5rem;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-card p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.testimonial-card footer {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
 /* FAQ */
 .faq-list {
   max-width: 720px;
@@ -799,11 +883,6 @@ select[aria-invalid="true"] {
   margin: 0;
   font-size: 0.9rem;
   color: var(--color-muted);
-}
-
-/* Contact anchor spacing */
-.contact-anchor {
-  padding-top: 0;
 }
 
 /* Footer */
@@ -864,7 +943,8 @@ select[aria-invalid="true"] {
   .agenda-layout,
   .logistics-grid,
   .form-layout,
-  .speakers-grid {
+  .speakers-grid,
+  .testimonials {
     grid-template-columns: minmax(0, 1fr);
   }
 

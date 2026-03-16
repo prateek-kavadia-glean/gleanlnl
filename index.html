@@ -45,18 +45,18 @@
         class="nav-links"
         aria-label="Primary navigation"
       >
-        <a href="#about">About the sessions</a>
+        <a href="#about">About</a>
         <a href="#how-it-works">How it works</a>
         <a href="#what-youll-learn">What you’ll learn</a>
         <a href="#agenda">Agenda</a>
-        <a href="#speakers">Speakers</a>
+        <a href="#who-should-join">Who should join</a>
         <a href="#faq">FAQ</a>
         <a
           href="#request-session"
           class="nav-cta"
           data-analytics="nav_request_session"
         >
-          Request a session
+          Request an on-site AI session
         </a>
       </nav>
       <button
@@ -78,10 +78,7 @@
             On-site AI strategy sessions
           </p>
           <h1>
-            On-Site AI Deep-Dive:
-            <span class="headline-break">
-              Work AI that works for your team
-            </span>
+            Host an on-site AI strategy session at your office
           </h1>
           <p class="hero-subtitle">
             We’ll come to your office for a breakfast, lunch, or coffee session
@@ -99,10 +96,7 @@
             </span>
             <span class="badge">
               <span class="badge-label">Availability</span>
-              <span
-                class="badge-value"
-                data-config-text="availabilityWindow"
-              ></span>
+              <span class="badge-value" data-config-text="availabilityWindow"></span>
             </span>
             <span class="badge badge-accent">
               <span class="badge-label">Format</span>
@@ -122,7 +116,7 @@
               Request an on-site AI session
             </a>
             <a
-              href="#contact"
+              href="mailto:events@glean.com"
               class="hero-link"
               id="contact-link"
             >
@@ -292,6 +286,15 @@
             </ul>
           </article>
         </div>
+        <div class="section-cta">
+          <a
+            href="#request-session"
+            class="btn btn-primary"
+            data-analytics="how_it_works_request_session"
+          >
+            Request an on-site AI session
+          </a>
+        </div>
       </div>
     </section>
 
@@ -343,6 +346,15 @@
             </p>
           </article>
         </div>
+        <div class="section-cta">
+          <a
+            href="#request-session"
+            class="btn btn-primary"
+            data-analytics="what_youll_learn_request_session"
+          >
+            Request an on-site AI session
+          </a>
+        </div>
       </div>
     </section>
 
@@ -364,7 +376,7 @@
           <div class="agenda-block">
             <h3>Before the on-site</h3>
             <p>
-              {{PREP_DURATION}} prep session with your champion to align on:
+              <span data-config-text="prepDuration"></span> prep session with your champion to align on:
             </p>
             <ul class="checklist">
               <li>Your current tools and data sources</li>
@@ -376,7 +388,7 @@
 
           <div class="agenda-block">
             <h3>On-site session (example – lunch)</h3>
-            <p>{{SESSION_DURATION}} at your office, over lunch.</p>
+            <p><span data-config-text="sessionDuration"></span> at your office, over lunch.</p>
             <ol class="timeline">
               <li>
                 <span class="time">0:00–0:10</span>
@@ -509,6 +521,31 @@
       </div>
     </section>
 
+    <!-- Social proof -->
+    <section class="section social-proof" aria-label="Trusted by leading organizations">
+      <div class="container">
+        <p class="social-proof-eyebrow">Trusted by leading organizations</p>
+        <div class="logo-band" aria-hidden="true">
+          <!-- EDITABLE: Replace with actual customer logo URLs or SVG -->
+          <span class="logo-placeholder">Customer 1</span>
+          <span class="logo-placeholder">Customer 2</span>
+          <span class="logo-placeholder">Customer 3</span>
+          <span class="logo-placeholder">Customer 4</span>
+          <span class="logo-placeholder">Customer 5</span>
+        </div>
+        <div class="testimonials">
+          <blockquote class="testimonial-card">
+            <p>“The AI strategy session helped us cut through the noise and focus on what actually works. We left with a clear roadmap.”</p>
+            <footer>— IT Leader, Enterprise</footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <p>“Having the team come on-site made all the difference. The discussion was tailored to our tools and our questions.”</p>
+            <footer>— Operations Director, Mid-Market</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
     <!-- Request session / Registration form -->
     <section
       id="request-session"
@@ -559,11 +596,25 @@
             </ol>
           </div>
 
-          <div class="form-card">
+          <div class="form-card" id="form-card-wrapper">
+            <div id="form-success-card" class="form-success-card" hidden>
+              <h3>Thanks for requesting an on-site AI session</h3>
+              <p>
+                We’ve received your request. Our team will reach out within
+                <span data-config-text="responseSLA"></span>
+                business days to schedule a short prep conversation and confirm
+                details for your on-site session.
+              </p>
+              <p class="form-success-card-contact">
+                For urgent questions, reach us at
+                <a id="form-success-contact-link" href="mailto:events@glean.com">events@glean.com</a>.
+              </p>
+            </div>
             <form
               id="session-request-form"
               novalidate
               aria-describedby="form-error-summary"
+              aria-hidden="false"
             >
               <div
                 id="form-error-summary"
@@ -659,6 +710,9 @@
                   </option>
                   <option value="Coffee / afternoon session">
                     Coffee / afternoon session
+                  </option>
+                  <option value="Not sure / open to options">
+                    Not sure / open to options
                   </option>
                   <option value="Other">Other</option>
                 </select>
@@ -776,21 +830,14 @@
                     name="optIn"
                   />
                   <span>
-                    I’d like to receive occasional updates about Glean and
-                    future events.
+                    I’d like to receive occasional updates about future AI
+                    content and events.
                   </span>
                 </label>
               </div>
 
               <p class="consent-text">
-                By submitting, you agree to our
-                <a
-                  href="https://www.glean.com/privacy-policy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Privacy Policy
-                </a>.
+                By submitting, you agree we may contact you about this request.
               </p>
 
               <button
@@ -895,15 +942,18 @@
             </p>
           </details>
         </div>
+        <div class="section-cta">
+          <a
+            href="#request-session"
+            class="btn btn-primary"
+            data-analytics="faq_request_session"
+          >
+            Request an on-site AI session
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Contact anchor (for hero link) -->
-    <section
-      id="contact"
-      class="section contact-anchor"
-      aria-hidden="true"
-    ></section>
   </main>
 
   <!-- Footer -->

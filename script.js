@@ -2,9 +2,11 @@
 // Non-technical teammates can safely edit values in CONFIG.
 const CONFIG = {
   cityRegion: "San Francisco Bay Area",
-  availabilityWindow: "the week of {{DATE_RANGE}}",
-  formatSummary: "On-site AI strategy sessions: breakfast, lunch, or coffee",
+  availabilityWindow: "March 24–28, 2025", // EDITABLE: e.g. "the week of March 24, 2025"
+  formatSummary: "On-site AI strategy sessions (breakfast, lunch, or coffee)",
   responseSLA: "2 business days",
+  prepDuration: "30–45 minute",
+  sessionDuration: "60–90 minutes",
   contactEmail: "events@glean.com",
   internalNotifyEmail: "onsite-ai-sessions@glean.com", // used server-side
   speakers: [
@@ -36,7 +38,9 @@ function applyConfigText() {
     cityRegion: CONFIG.cityRegion,
     availabilityWindow: CONFIG.availabilityWindow,
     formatSummary: CONFIG.formatSummary,
-    responseSLA: CONFIG.responseSLA
+    responseSLA: CONFIG.responseSLA,
+    prepDuration: CONFIG.prepDuration || "30–45 minute",
+    sessionDuration: CONFIG.sessionDuration || "60–90 minutes"
   };
 
   document
@@ -183,6 +187,12 @@ function initForm() {
       otherFormatGroup.hidden = true;
     }
   });
+
+  // Apply config to success card contact link
+  const successContactLink = document.getElementById("form-success-contact-link");
+  if (successContactLink && CONFIG.contactEmail) {
+    successContactLink.href = `mailto:${CONFIG.contactEmail}`;
+  }
 
   // Analytics hooks
   document
@@ -380,15 +390,20 @@ function initForm() {
         cityRegion: CONFIG.cityRegion
       });
 
-      // Clear form and show success inline
+      // Replace form with success card
+      const formCard = document.getElementById("form-card-wrapper");
+      const successCard = document.getElementById("form-success-card");
+      if (formCard && successCard) {
+        form.hidden = true;
+        form.setAttribute("aria-hidden", "true");
+        successCard.hidden = false;
+        successCard.removeAttribute("hidden");
+        // Re-apply config text for responseSLA in success card
+        const slaEl = successCard.querySelector("[data-config-text='responseSLA']");
+        if (slaEl) slaEl.textContent = CONFIG.responseSLA;
+      }
       form.reset();
       otherFormatGroup.hidden = true;
-
-      successMessage.textContent =
-        "Thanks for requesting an on-site AI session. We’ve received your request and our team will follow up shortly to schedule a brief prep conversation with your champion and confirm timing for your on-site session. For anything urgent, reach us at " +
-        (CONFIG.contactEmail || "events@glean.com") +
-        ".";
-
       errorSummary.textContent = "";
     } catch (err) {
       console.error(err);
