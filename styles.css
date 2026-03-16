@@ -124,16 +124,21 @@ a:hover {
   display: block;
   height: 24px;
   width: auto;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .footer-logo {
   margin-bottom: 0.5rem;
 }
 
-.footer-logo img {
+.footer-logo img,
+.footer-logo-img {
   display: block;
   height: 22px;
   width: auto;
+  object-fit: contain;
+  object-position: left center;
   opacity: 0.9;
 }
 
@@ -1031,10 +1036,13 @@ select[aria-invalid="true"] {
   margin-bottom: 0.5rem;
 }
 
-.footer-logo img {
+.footer-logo img,
+.footer-logo-img {
   display: block;
   height: 22px;
   width: auto;
+  object-fit: contain;
+  object-position: left center;
   opacity: 0.9;
 }
 
