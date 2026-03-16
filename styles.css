@@ -1,13 +1,13 @@
-/* Global tokens & reset */
+/* Global tokens & reset - Glean brand (glean.com/brand-resources) */
 :root {
   --color-bg: #ffffff;
-  --color-bg-alt: #f6f3eb;
+  --color-bg-alt: #f6f3eb; /* Oatmeal */
   --color-text: #000000;
   --color-muted: #555555;
   --color-border-subtle: #e2ddd2;
-  --color-primary: #1d4ed8;
-  --color-primary-hover: #1e40af;
-  --color-accent: #d8fd49;
+  --color-primary: #343ced; /* Glean Primary Blue */
+  --color-primary-hover: #252bd1;
+  --color-accent: #d8fd49; /* Glean Bright Green */
   --color-error: #b3261e;
   --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.06);
   --radius-md: 10px;
@@ -151,13 +151,13 @@ a:hover {
 .nav-cta {
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(29, 78, 216, 0.25);
+  border: 1px solid rgba(52, 60, 237, 0.25);
   color: var(--color-primary);
-  background-color: #eff6ff;
+  background-color: #f3f4ff;
 }
 
 .nav-cta:hover {
-  background-color: #dbeafe;
+  background-color: #e1e3ff;
 }
 
 .nav-toggle {
@@ -180,18 +180,24 @@ a:hover {
   border-radius: 999px;
 }
 
-/* Hero */
+/* Hero - Glean-style blue gradient (matches glean.com Home Hero Blue BG) */
 .hero {
   padding: 4rem 0 3.5rem;
-  background: radial-gradient(
-      circle at top left,
-      rgba(216, 253, 73, 0.25),
-      transparent 60%
+  background: linear-gradient(
+      135deg,
+      rgba(52, 60, 237, 0.06) 0%,
+      rgba(52, 60, 237, 0.02) 50%,
+      transparent 100%
     ),
     radial-gradient(
-      circle at bottom right,
-      rgba(29, 78, 216, 0.12),
-      transparent 55%
+      circle at top right,
+      rgba(216, 253, 73, 0.2),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(52, 60, 237, 0.08),
+      transparent 45%
     );
 }
 
@@ -339,24 +345,24 @@ a:hover {
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 10px 20px rgba(52, 60, 237, 0.25);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   text-decoration: none;
-  box-shadow: 0 16px 35px rgba(29, 78, 216, 0.32);
+  box-shadow: 0 16px 35px rgba(52, 60, 237, 0.32);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: #ffffff;
   color: var(--color-primary);
-  border-color: rgba(29, 78, 216, 0.36);
+  border-color: rgba(52, 60, 237, 0.36);
 }
 
 .btn-secondary:hover {
-  background-color: #eff6ff;
+  background-color: #f3f4ff;
   text-decoration: none;
 }
 
@@ -433,7 +439,7 @@ a:hover {
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: #dbeafe;
+  background: #eef0ff;
   color: var(--color-primary);
   display: inline-flex;
   align-items: center;
@@ -584,7 +590,7 @@ a:hover {
   border-radius: 50%;
   background: linear-gradient(
     135deg,
-    rgba(52, 60, 237, 0.9),
+    rgba(52, 60, 237, 0.95),
     rgba(216, 253, 73, 0.9)
   );
   color: #ffffff;
@@ -706,7 +712,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid rgba(29, 78, 216, 0.2);
+  outline: 2px solid rgba(52, 60, 237, 0.2);
   outline-offset: 1px;
   border-color: var(--color-primary);
 }
@@ -816,6 +822,28 @@ select[aria-invalid="true"] {
   margin-bottom: 2rem;
 }
 
+.customer-logo {
+  height: 28px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+.customer-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.customer-logo-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
 .logo-placeholder {
   font-size: 0.85rem;
   color: var(--color-muted);
@@ -887,6 +915,61 @@ select[aria-invalid="true"] {
   margin: 0;
   font-size: 0.9rem;
   color: var(--color-muted);
+}
+
+/* Footer CTA - Glean-style gradient (glean.com CTA Background Gradient) */
+.footer-cta {
+  background: linear-gradient(
+    135deg,
+    #343ced 0%,
+    #4f46e5 35%,
+    #6366f1 70%,
+    #818cf8 100%
+  );
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.footer-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-cta-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.footer-cta-headline {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.footer-cta-sub {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-cta-light {
+  margin-top: 0.5rem;
+  background: #ffffff;
+  color: #343ced;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cta-light:hover {
+  background: #f8fafc;
+  color: #252bd1;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer */
