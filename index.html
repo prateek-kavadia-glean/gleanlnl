@@ -53,6 +53,7 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Sticky Navigation -->
   <header class="site-header">
     <div class="nav-container">
@@ -96,7 +97,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero-layout">
@@ -598,276 +599,8 @@
             </ol>
           </div>
 
-          <div class="form-card" id="form-card-wrapper">
-            <div id="form-success-card" class="form-success-card" hidden>
-              <h3>Thanks for requesting an on-site AI session</h3>
-              <p>
-                We’ve received your request. We'll get back to you within <span data-config-text="responseSLA"></span> to schedule a short prep call and confirm details.
-              </p>
-              <p class="form-success-card-contact">
-                For urgent questions, reach us at
-                <a id="form-success-contact-link" href="mailto:events@glean.com">events@glean.com</a>.
-              </p>
-            </div>
-            <form
-              id="session-request-form"
-              novalidate
-              aria-describedby="form-error-summary"
-              aria-hidden="false"
-            >
-              <div
-                id="form-error-summary"
-                class="form-error-summary"
-                role="alert"
-                aria-live="polite"
-              ></div>
-
-              <div class="field-group">
-                <label for="fullName">Full name *</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  autocomplete="name"
-                  required
-                />
-                <p class="field-error" data-error-for="fullName"></p>
-              </div>
-
-              <div class="field-group">
-                <label for="workEmail">Work email *</label>
-                <input
-                  type="email"
-                  id="workEmail"
-                  name="workEmail"
-                  inputmode="email"
-                  autocomplete="email"
-                  required
-                />
-                <p class="field-hint">
-                  Please use your company email. Personal email domains may
-                  delay follow-up.
-                </p>
-                <p class="field-warning" data-warning-for="workEmail"></p>
-                <p class="field-error" data-error-for="workEmail"></p>
-              </div>
-
-              <div class="field-group">
-                <label for="company">Company *</label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  autocomplete="organization"
-                  required
-                />
-                <p class="field-error" data-error-for="company"></p>
-              </div>
-
-              <div class="field-group">
-                <label for="jobTitle">Job title / role *</label>
-                <input
-                  type="text"
-                  id="jobTitle"
-                  name="jobTitle"
-                  autocomplete="organization-title"
-                  required
-                />
-                <p class="field-error" data-error-for="jobTitle"></p>
-              </div>
-
-              <div class="field-group">
-                <label for="officeLocation">
-                  Office location (city &amp; address) *
-                </label>
-                <textarea
-                  id="officeLocation"
-                  name="officeLocation"
-                  rows="2"
-                  required
-                ></textarea>
-                <p class="field-hint">
-                  Where would you like to host the on-site session?
-                </p>
-                <p class="field-error" data-error-for="officeLocation"></p>
-              </div>
-
-              <div class="field-group">
-                <label for="preferredFormat">
-                  Preferred session format *
-                </label>
-                <select
-                  id="preferredFormat"
-                  name="preferredFormat"
-                  required
-                >
-                  <option value="">Select format</option>
-                  <option value="Breakfast session">
-                    Breakfast session
-                  </option>
-                  <option value="Lunch-and-learn">
-                    Lunch-and-learn
-                  </option>
-                  <option value="Coffee / afternoon session">
-                    Coffee / afternoon session
-                  </option>
-                  <option value="Dinner session">Dinner session</option>
-                  <option value="Not sure / open to options">
-                    Not sure / open to options
-                  </option>
-                  <option value="Other">Other</option>
-                </select>
-                <p class="field-error" data-error-for="preferredFormat"></p>
-              </div>
-
-              <div
-                class="field-group"
-                id="otherFormatGroup"
-                hidden
-              >
-                <label for="otherFormatDetails">
-                  If “Other”, briefly describe
-                </label>
-                <input
-                  type="text"
-                  id="otherFormatDetails"
-                  name="otherFormatDetails"
-                />
-              </div>
-
-              <div class="field-group">
-                <label for="preferredDate">Preferred date</label>
-                <select id="preferredDate" name="preferredDate">
-                  <option value="">Select a date (optional)</option>
-                  <option value="Monday, March 30">Monday, March 30</option>
-                  <option value="Tuesday, March 31">Tuesday, March 31</option>
-                  <option value="Wednesday, April 1">Wednesday, April 1</option>
-                  <option value="Thursday, April 2">Thursday, April 2</option>
-                  <option value="Friday, April 3">Friday, April 3</option>
-                </select>
-                <p class="field-hint">
-                  Sessions available March 30–April 3, 2026 in the Bay Area.
-                </p>
-              </div>
-
-              <div class="field-group">
-                <label for="preferredDatesTimes">
-                  Preferred dates and times *
-                </label>
-                <textarea
-                  id="preferredDatesTimes"
-                  name="preferredDatesTimes"
-                  rows="2"
-                  required
-                ></textarea>
-                <p class="field-hint">
-                  We’re in
-                  <span data-config-text="cityRegion"></span>
-                  <span data-config-text="availabilityWindow"></span>.
-                  Share dates or windows that work for your team.
-                </p>
-                <p
-                  class="field-error"
-                  data-error-for="preferredDatesTimes"
-                ></p>
-              </div>
-
-              <div class="field-group">
-                <label for="estimatedAttendees">
-                  Estimated number of attendees
-                </label>
-                <input
-                  type="number"
-                  id="estimatedAttendees"
-                  name="estimatedAttendees"
-                  min="1"
-                  inputmode="numeric"
-                />
-                <p class="field-hint">
-                  A typical range is 6–20 attendees.
-                </p>
-                <p
-                  class="field-error"
-                  data-error-for="estimatedAttendees"
-                ></p>
-              </div>
-
-              <div class="field-group">
-                <label for="championContact">
-                  Internal champion / main point of contact
-                </label>
-                <textarea
-                  id="championContact"
-                  name="championContact"
-                  rows="2"
-                ></textarea>
-                <p class="field-hint">
-                  Who will help coordinate this session on your side? (Name and
-                  role.)
-                </p>
-              </div>
-
-              <div class="field-group field-group-optional">
-                <label for="aiJourney">
-                  What does your AI journey look like today? <span class="label-optional">(Optional)</span>
-                </label>
-                <textarea
-                  id="aiJourney"
-                  name="aiJourney"
-                  rows="3"
-                ></textarea>
-                <p class="field-hint">
-                  Share a bit about where you are with AI at work (experiments, pilots, or production use).
-                </p>
-              </div>
-
-              <div class="field-group field-group-optional">
-                <label for="desiredOutcomes">
-                  What would you most like to get out of this session? <span class="label-optional">(Optional)</span>
-                </label>
-                <textarea
-                  id="desiredOutcomes"
-                  name="desiredOutcomes"
-                  rows="3"
-                ></textarea>
-                <p class="field-hint">
-                  This helps us tailor both the prep session and on-site content.
-                </p>
-              </div>
-
-              <div class="field-group checkbox-group">
-                <label class="checkbox-label">
-                  <input
-                    type="checkbox"
-                    id="optIn"
-                    name="optIn"
-                  />
-                  <span>
-                    I’d like to receive occasional updates about future AI
-                    content and events.
-                  </span>
-                </label>
-              </div>
-
-              <p class="consent-text">
-                By submitting, you agree we may contact you about this request.
-              </p>
-
-              <button
-                type="submit"
-                class="btn btn-primary btn-full"
-                data-analytics="form_submit"
-              >
-                Submit request
-              </button>
-
-              <p
-                id="form-success-message"
-                class="form-success-message"
-                role="status"
-                aria-live="polite"
-              ></p>
-            </form>
+          <div class="form-card typeform-embed-card" id="form-card-wrapper">
+            <div data-tf-live="01KKVW49T9J5VSSFTE8AY6BM70" class="typeform-embed-inner" aria-label="Request an on-site AI session form"></div>
           </div>
         </div>
       </div>
@@ -1025,8 +758,8 @@
       type="button"
       class="theme-toggle"
       id="theme-toggle"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
+      aria-label="Toggle color theme"
+      title="Toggle color theme"
     >
       <span class="icon-dark" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1038,5 +771,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="https://embed.typeform.com/next/embed.js"></script>
 </body>
 </html>
