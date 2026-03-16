@@ -43,10 +43,22 @@ const CONFIG = {
       title: "Solutions Engineer, Glean",
       initialsFallback: "TC",
       bio: "Partners with the Corporate team to run high-signal in-person sessions that feel practical and useful to the room. Brings Glean to life through tailored demos and use case discussions."
+    },
+    {
+      name: "Nick DeVito",
+      title: "Corporate Sales Director, Glean",
+      initialsFallback: "ND",
+      bio: "Leads Glean's Corporate sales team in San Francisco. Ensures the session connects to your organization's goals and coordinates follow-up with your dedicated account lead."
+    },
+    {
+      name: "Your dedicated Glean account lead",
+      title: "Account Lead, Glean",
+      initialsFallback: "AL",
+      bio: "Your primary Glean contact for strategy and adoption. Joins the session to align the discussion with your objectives and to support next steps after the Lunch & Learn."
     }
   ],
-  // Additional support (not listed as speaker; used in form routing and optional copy)
-  additionalSupport: "Nick DeVito (Corporate Sales Director) and the Corporate team"
+  // Additional support (referenced in copy; speakers array is source of truth for host cards)
+  additionalSupport: "Corporate Solutions Engineering and Sales"
 };
 
 // Form endpoint: swap for Glean-owned endpoint or Marketo/HubSpot when ready.

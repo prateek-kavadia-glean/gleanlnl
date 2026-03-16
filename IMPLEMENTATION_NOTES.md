@@ -10,7 +10,7 @@ Running backlog and integration checklist. Update as items are completed.
 - **CONFIG**: Single source of truth in `script.js` for region, availabilityWindow (March 30–April 3, 2026), responseSLA (2 business days), responseSLABusinessDays, heroEyebrow; grouped and commented for future per-region/JSON externalization.
 - **SLA copy**: All “within [SLA]” and “limited availability” replaced with CONFIG-driven text and explicit “We’ll get back to you within 2 business days to schedule a short prep call and confirm details.”
 - **What is Glean**: Short blurb in About (Work AI that works; AI Assistant and Agents; company knowledge; secure and at scale).
-- **Social proof**: Logo strip uses `<img>` with `customer-logo` class and meaningful alt (Plaid, Pinterest, etc.). `src` points to `assets/logos/*.svg`—replace with real assets. Testimonials: structure in place; `TESTIMONIALS` array in `script.js`; container hidden when empty (no fake quotes).
+- **Social proof**: Logo strip uses companies from glean.com customer stories (Bay Area–first): Databricks, Confluent, Pure Storage, Webflow, Duolingo, Grammarly. Logos loaded via Clearbit. Testimonials: structure in place; `TESTIMONIALS` array in `script.js`; container hidden when empty (no fake quotes).
 - **SEO**: `<title>`, meta description, canonical, Open Graph, Twitter cards in `index.html`. Canonical URL placeholder: update when deploying.
 - **JSON-LD**: Event schema in `<head>` (name, description, location San Francisco Bay Area, start/end date, organizer Glean Technologies, Inc.).
 - **Analytics**: `trackEvent(action, payload)` pushes to `window.dataLayer` as `lnl_event` with action/label. All `[data-analytics]` hooks (hero, nav, mid-page, footer CTAs) and form events (form_submit_attempt, form_submit_success, form_submit_error, form_validation_error) wired.
@@ -29,7 +29,7 @@ Running backlog and integration checklist. Update as items are completed.
 
 | Item | Owner | Notes |
 |------|--------|--------|
-| **Logo assets** | Marketing | Customer logos for Plaid, Pinterest, WealthSimple, Gainsight, Greenhouse, LaunchDarkly. Place in `assets/logos/` (e.g. `plaid.svg`). Existing CSS: `.customer-logo` (height 28px, grayscale, hover color). |
+| **Logo assets** | Marketing | Logos currently loaded from Clearbit (glean.com customers: Databricks, Confluent, Pure Storage, Webflow, Duolingo, Grammarly). To use local assets instead, place in `assets/logos/` and update `index.html` src. Existing CSS: `.customer-logo` (height 28px, grayscale, hover color). |
 | **Hero image** | Marketing | Optional: product UI screenshot or event artwork. Replace `assets/hero-work-ai.svg` or set `src` in hero `<figure>`. |
 | **Testimonials** | Marketing | Real quotes with name, title, company. Add to `TESTIMONIALS` array in `script.js` (quote, name, title, company). |
 | **Analytics config** | Marketing / Ops | Ensure `dataLayer` is defined (e.g. GTM) so `trackEvent` pushes are consumed. Events: `lnl_event` with action/label. |

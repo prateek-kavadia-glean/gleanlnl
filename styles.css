@@ -686,6 +686,55 @@ a:hover {
   color: var(--color-muted);
 }
 
+/* Form section - Glean blue background so it stands out */
+.section-form {
+  background: linear-gradient(
+    135deg,
+    #343ced 0%,
+    #4f46e5 40%,
+    #6366f1 100%
+  );
+  color: #ffffff;
+}
+
+.section-form .section-header h2 {
+  color: #ffffff;
+}
+
+.section-form .section-header p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.section-form .form-summary h3 {
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.section-form .form-summary .checklist li {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.section-form .form-summary .checklist li::before {
+  color: var(--color-accent);
+}
+
+.section-form .form-summary .numbered-list {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.section-form .form-summary-subheading {
+  margin-top: 1.75rem;
+}
+
+.section-form .form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.8rem 1.7rem 1.9rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* Form layout */
 .form-layout {
   display: grid;
@@ -953,61 +1002,6 @@ select[aria-invalid="true"] {
   margin: 0;
   font-size: 0.9rem;
   color: var(--color-muted);
-}
-
-/* Footer CTA - Glean-style gradient (glean.com CTA Background Gradient) */
-.footer-cta {
-  background: linear-gradient(
-    135deg,
-    #343ced 0%,
-    #4f46e5 35%,
-    #6366f1 70%,
-    #818cf8 100%
-  );
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.footer-cta-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-cta-logo-text {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-}
-
-.footer-cta-headline {
-  margin: 0;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-.footer-cta-sub {
-  margin: 0;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.btn-cta-light {
-  margin-top: 0.5rem;
-  background: #ffffff;
-  color: #343ced;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.btn-cta-light:hover {
-  background: #f8fafc;
-  color: #252bd1;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer - glean.com-style multi-column */
