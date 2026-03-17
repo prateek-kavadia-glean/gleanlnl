@@ -29,7 +29,7 @@ Running backlog and integration checklist. Update as items are completed.
 
 | Item | Owner | Notes |
 |------|--------|--------|
-| **Logo assets** | Marketing | Logos currently loaded from Clearbit (glean.com customers: Databricks, Confluent, Pure Storage, Webflow, Duolingo, Grammarly). To use local assets instead, place in `assets/logos/` and update `index.html` src. Existing CSS: `.customer-logo` (height 28px, grayscale, hover color). |
+| **Logo assets** | Marketing | Logos loaded from `assets/logos/`: `databricks.png`, `confluent.png`, `purestorage.png`, `webflow.webp`, `duolingo.png`, `grammarly.png`. CSS: `.customer-logo` (height 28px, grayscale, hover color). |
 | **Hero image** | Marketing | Optional: product UI screenshot or event artwork. Replace `assets/hero-work-ai.svg` or set `src` in hero `<figure>`. |
 | **Testimonials** | Marketing | Real quotes with name, title, company. Add to `TESTIMONIALS` array in `script.js` (quote, name, title, company). |
 | **Analytics config** | Marketing / Ops | Ensure `dataLayer` is defined (e.g. GTM) so `trackEvent` pushes are consumed. Events: `lnl_event` with action/label. |
