@@ -62,7 +62,7 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 ## Completed
 
 - **Hero**: SF Bay Area Lunch & Learn week framing; eyebrow badge; headline “On-site Work AI Lunch & Learn with your leadership team”; subcopy with agentic AI use cases, see Glean live, practical roadmap; primary CTA scrolls to form.
-- **CONFIG**: Single source of truth in `script.js` for region, availabilityWindow (March 30–April 3, 2026), responseSLA (2 business days), responseSLABusinessDays, heroEyebrow; grouped and commented for future per-region/JSON externalization.
+- **CONFIG**: Single source of truth in `script.js` for region, `heroWhere` (hero line), availabilityWindow (e.g. March 30 – April 3, 2026), responseSLA, etc.; grouped for future per-region/JSON externalization.
 - **SLA copy**: All “within [SLA]” and “limited availability” replaced with CONFIG-driven text and explicit “We’ll get back to you within 2 business days to schedule a short prep call and confirm details.”
 - **What is Glean**: Short blurb in About (Work AI that works; AI Assistant and Agents; company knowledge; secure and at scale).
 - **Social proof**: Logo strip structure and CSS in place; images expected from `assets/logos/` (see Action items). Testimonials: structure in place; `TESTIMONIALS` array in `script.js`; container hidden when empty (no fake quotes).

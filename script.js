@@ -6,10 +6,12 @@ var THEME_KEY = "glean-site-theme";
 
 var CONFIG = {
   cityRegion: "San Francisco Bay Area",
-  availabilityWindow: "March 30–April 3, 2026",
+  /** Hero “Where” line (short); cityRegion used in body copy */
+  heroWhere: "SF Bay Area",
+  /** Spaced en dash (–) for readability */
+  availabilityWindow: "March 30 – April 3, 2026",
   responseSLA: "2 business days",
   responseSLABusinessDays: 2,
-  heroEyebrow: "SF Bay Area • March 30–April 3, 2026",
   prepDuration: "30–45 minute",
   sessionDuration: "60–90 minutes",
   typeformFormId: "",
@@ -55,9 +57,9 @@ function initThemeToggle() {
 function applyConfig() {
   var keys = [
     "cityRegion",
+    "heroWhere",
     "availabilityWindow",
     "responseSLA",
-    "heroEyebrow",
     "prepDuration",
     "sessionDuration",
   ];
