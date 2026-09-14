@@ -983,13 +983,13 @@ html:not([data-theme]) .theme-toggle .icon-light {
   line-height: 1.55;
 }
 
-/* Form section - Glean blue background so it stands out */
+/* Form section - clear visual break with enough room for the long Google Form */
 .section-form {
-  padding: var(--space-section) 0;
+  padding: clamp(4rem, 8vw, 6rem) 0;
   background: linear-gradient(
     135deg,
     #343ced 0%,
-    #4f46e5 40%,
+    #4f46e5 42%,
     #6366f1 100%
   );
   color: #ffffff;
@@ -1043,11 +1043,14 @@ html:not([data-theme]) .theme-toggle .icon-light {
 }
 
 .section-form .form-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 0;
+  overflow: hidden;
   background: var(--color-surface);
-  border-radius: 20px;
-  padding: 1.8rem 1.7rem 1.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 [data-theme="dark"] .section-form .form-card {
@@ -1058,9 +1061,9 @@ html:not([data-theme]) .theme-toggle .icon-light {
 /* Form layout */
 .form-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 2.5rem;
-  align-items: flex-start;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
 }
 
 .section-form .form-summary {
@@ -1084,26 +1087,18 @@ html:not([data-theme]) .theme-toggle .icon-light {
   border: 1px solid var(--border-card);
 }
 
-/* Typeform embed: container for inline widget */
-.typeform-embed-card .typeform-embed-inner {
-  min-height: 500px;
+/* Google Form embed: full-width framed experience with no inner padding */
+.google-form-card {
+  line-height: 0;
+}
+
+.google-form-embed {
+  display: block;
   width: 100%;
-}
-
-.typeform-embed-card .typeform-embed-inner [data-tf-widget],
-.typeform-embed-card .typeform-embed-inner[data-tf-live] {
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.typeform-fallback {
-  font-size: 0.9rem;
-  color: var(--color-muted);
-  margin: 0;
-}
-
-.typeform-fallback a {
-  font-weight: 500;
+  height: 1803px;
+  min-height: 1803px;
+  border: 0;
+  background: var(--color-surface);
 }
 
 .field-group {
@@ -1602,6 +1597,16 @@ select[aria-invalid="true"] {
 
   .form-card {
     padding: 1.5rem 1.3rem 1.6rem;
+  }
+
+  .google-form-card {
+    padding: 0;
+    border-radius: 12px;
+  }
+
+  .google-form-embed {
+    height: 1950px;
+    min-height: 1950px;
   }
 
   .logistics-grid {

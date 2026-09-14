@@ -22,14 +22,14 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 
 ### Performance & technical SEO
 
-- **Page weight**: Single HTML, one CSS file, one small script, Typeform embed script (third-party). Fonts: Google Fonts (DM Sans) with preconnect—consider `font-display: swap` (handled by Google’s default).
-- **Load performance**: No explicit preload for LCP (hero image or font). Typeform script loads from embed.typeform.com and can delay interactivity; consider loading it after main content or lazy-loading the form container. Target: first load under 3 seconds on fast 3G; measure with Lighthouse.
+- **Page weight**: Single HTML, one CSS file, one small script, and a Google Forms iframe (third-party). Fonts: Google Fonts (DM Sans) with preconnect—consider `font-display: swap` (handled by Google’s default).
+- **Load performance**: No explicit preload for LCP (hero image or font). The Google Forms iframe is lazy-loaded, but still adds a third-party request when the form approaches the viewport. Target: first load under 3 seconds on fast 3G; measure with Lighthouse.
 - **SEO**: Title, meta description, canonical, OG and Twitter tags present. **Canonical mismatch**: `<link rel="canonical">` and `og:url` point to `https://www.glean.com/lunch-and-learn`, while `CNAME` is `www.gleanworkshop.com`. If the site is served at gleanworkshop.com, canonical and `og:url` should match the actual deployment URL to avoid duplicate-content and sharing issues.
 - **Security**: No sensitive logic client-side. Ensure production is served over HTTPS (GitHub Pages + custom domain typically provides this).
 
 ### Credibility
 
-- **Contact**: Single mailto in hero (“Questions? Contact us”) and physical addresses in footer (SF + Palo Alto). No dedicated contact page or form fallback if Typeform fails.
+- **Contact**: Single mailto in hero (“Questions? Contact us”) and physical addresses in footer (SF + Palo Alto). No dedicated contact page or local form fallback if Google Forms fails.
 - **Legal**: Footer links to glean.com Website Terms and Privacy—appropriate for a microsite. Trust center linked under Company.
 - **Social**: No links to Glean’s LinkedIn, Twitter/X, or other social in footer. Adding them would support legitimacy and follow-through from social campaigns.
 
@@ -42,7 +42,7 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 | **P0** | Add missing image assets | Marketing / Dev | **Required for launch**: `assets/glean-icon.png`, `assets/glean-wordmark.png`, and `assets/logos/` (databricks.png, confluent.png, purestorage.png, webflow.webp, duolingo.png, grammarly.png). Without these, nav, favicon, footer, and social-proof strip show broken images. |
 | **P0** | Align canonical URL with deployment | Ops / Dev | If site is live at `https://www.gleanworkshop.com`, set `<link rel="canonical">`, `og:url`, and Twitter card URL to that origin. Update when production URL is final. |
 | **P1** | Verify OG image and Twitter image | Marketing | Current `og:image` is `https://www.glean.com/images/og-lunch-and-learn.png`. Confirm this URL returns a valid image and add `twitter:image` if you want consistent previews on Twitter. |
-| **P1** | Ensure HTTPS and &lt;3s target | Ops / Dev | Confirm production is HTTPS. Run Lighthouse (Performance + SEO); optimize if LCP or TTI exceeds ~3s (e.g. font loading, Typeform load strategy). |
+| **P1** | Ensure HTTPS and &lt;3s target | Ops / Dev | Confirm production is HTTPS. Run Lighthouse (Performance + SEO); optimize if LCP or TTI exceeds ~3s (e.g. font loading, Google Forms iframe load strategy). |
 | **P2** | Add social links to footer | Marketing / Dev | Add optional “Follow us” or inline links to Glean’s LinkedIn, Twitter/X, etc., in footer for credibility. |
 | **P2** | Document content review cadence | Marketing | After event week, either archive the page or update copy/dates for future runs. Note in runbook or checklist. |
 | **P2** | Single source for speaker names | Dev | Pull speaker intro in “On-site hosts” from CONFIG (or a shared snippet) so names don’t diverge from `CONFIG.speakers`. |
@@ -53,7 +53,7 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 
 - **Content**: Add one line to FAQ or Logistics: “How do I get in touch if I have questions?” → “Email us at [contact] or use the form above.” Reduces reliance on a single mailto. Consider adding a short “Last updated” or event-status note when the event has passed.
 - **UX**: Add `loading="lazy"` to hero image if it’s below the fold on mobile (already present on customer logos). Consider hiding or moving the floating theme toggle on narrow viewports if it overlaps CTA or form. Optional: “Back to top” link in footer for long sessions.
-- **Performance**: Preload the LCP image (e.g. hero SVG or primary logo) if it’s critical for LCP. Lazy-load or defer the Typeform embed script until the form section is near the viewport (e.g. Intersection Observer) to improve initial load.
+- **Performance**: Preload the LCP image (e.g. hero SVG or primary logo) if it’s critical for LCP. Keep the Google Forms iframe lazy-loaded and measure its impact on page load and interaction timing.
 - **Credibility**: Add a one-line “Contact” or “Questions?” in the footer (mailto or link to main site contact) in addition to hero. If testimonials are added later, keep them real and attributed (already the standard in code).
 - **A11y**: Run axe or Lighthouse Accessibility; fix any new issues. Ensure theme toggle and nav toggle have sufficient contrast in both themes.
 
@@ -68,8 +68,8 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 - **Social proof**: Logo strip structure and CSS in place; images expected from `assets/logos/` (see Action items). Testimonials: structure in place; `TESTIMONIALS` array in `script.js`; container hidden when empty (no fake quotes).
 - **SEO**: `<title>`, meta description, canonical, Open Graph, Twitter cards in `index.html`. Canonical/og:url must match deployment URL (see Action items).
 - **JSON-LD**: Event schema in `<head>` (name, description, location San Francisco Bay Area, start/end date, organizer Glean Technologies, Inc.).
-- **Analytics**: `trackEvent(action, payload)` pushes to `window.dataLayer` as `lnl_event` with action/label. All `[data-analytics]` hooks (hero, nav, mid-page, footer CTAs) wired. Form events apply if Typeform is instrumented via GTM or equivalent.
-- **Form**: **Typeform** embed in place via inline `data-tf-live` in `index.html` (form ID `01KKVW49T9J5VSSFTE8AY6BM70`). `CONFIG.typeformFormId` in `script.js` is unused for this live embed; document or centralize form ID if you add a fallback.
+- **Analytics**: `trackEvent(action, payload)` pushes to `window.dataLayer` as `lnl_event` with action/label. All `[data-analytics]` hooks (hero, nav, mid-page, footer CTAs) wired. Google Forms submission analytics require separate Google Analytics, Tag Manager, or form-response instrumentation.
+- **Form**: **Google Forms** embed in place via a lazy-loaded iframe in `index.html`. The form URL is currently inline because it is a presentation dependency, not application configuration.
 - **Copy**: About, What you’ll learn, Logistics tightened; executive phrases (priority agentic AI use cases, turn AI ambition into practical execution, live Glean deep dive) threaded; no Tier 1 or internal pipeline language.
 - **A11y & semantics**: One `<h1>` (hero); `<h2>` for top-level sections; `<h3>` for cards/FAQ; `<main>`; form section `aria-labelledby="request-session-heading"`; skip link, `:focus-visible`, theme toggle aria-label.
 - **FAQ**: Answers concise; one answer states session is complimentary and Glean covers lunch/refreshments.
@@ -88,7 +88,7 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 | **Testimonials** | Marketing | Real quotes with name, title, company. Add to `TESTIMONIALS` array in `script.js` (quote, name, title, company). |
 | **Analytics config** | Marketing / Ops | Ensure `dataLayer` is defined (e.g. GTM) so `trackEvent` pushes are consumed. Events: `lnl_event` with action/label. |
 | **Canonical URL** | Marketing / Ops | Set `<link rel="canonical">`, `og:url`, and Twitter URL to production origin (e.g. `https://www.gleanworkshop.com` if that’s the live URL). |
-| **Typeform form** | Marketing / Ops | Current form is embedded in HTML (`data-tf-live`). To change form, update the attribute in `index.html` or move to CONFIG and render via script. Create form in Typeform with equivalent fields (name, work email, company, etc.). |
+| **Google Form** | Marketing / Ops | Current form is embedded in HTML as a lazy-loaded iframe. To change form, update the iframe `src` in `index.html` and verify the height on desktop and mobile. |
 | **OG image** | Marketing | Confirm `og:image` (currently `https://www.glean.com/images/og-lunch-and-learn.png`) is correct and add `twitter:image` if desired. |
 
 ---
@@ -98,5 +98,5 @@ Summary of a deep analysis across content, UX, performance/SEO, and credibility.
 - **Speaker headshots**: Add optional `headshotUrl` to `CONFIG.speakers`; in `renderSpeakers()` render `<img class="speaker-avatar">` when set.
 - **CONFIG externalization**: Move CONFIG to JSON or per-region file (e.g. `config.sf.json`, `config.nyc.json`) for multi-region pages.
 - **Accessibility**: Run axe or Lighthouse for a full audit; address any additional findings.
-- **Backend / CRM**: If submissions must land in CRM or spreadsheet, use Typeform webhooks or replace with Glean endpoint or serverless forwarder.
-- **Performance**: Lazy-load or defer Typeform script until form section is in view; preload LCP image if needed to hit &lt;3s target.
+- **Backend / CRM**: Google Forms responses should be connected to the intended response Sheet or downstream workflow; verify access and ownership before launch.
+- **Performance**: Keep the Google Forms iframe lazy-loaded; preload the LCP image if needed to hit &lt;3s target.

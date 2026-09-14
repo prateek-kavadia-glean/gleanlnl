@@ -9,12 +9,11 @@ var CONFIG = {
   /** Hero “Where” line (short); cityRegion used in body copy */
   heroWhere: "SF Bay Area",
   /** Spaced en dash (–) for readability */
-  availabilityWindow: "Week of June 22 – 26, 2026",
+  availabilityWindow: "October 5 – 8, 2026",
   responseSLA: "2 business days",
   responseSLABusinessDays: 2,
   prepDuration: "30–45 minute",
   sessionDuration: "60–90 minutes",
-  typeformFormId: "",
   speakers: [
     { name: "Prateek Kavadia", title: "Solutions Engineer", bio: "" },
     { name: "Nick DeVito", title: "Corporate Sales Director", bio: "" },
